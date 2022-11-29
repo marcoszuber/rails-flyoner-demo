@@ -78,3 +78,5 @@ end
 
 gem "devise"
 gem "faker"
+gem "cloudinary"
+gem "tailwindcss-rails", "~> 2.0"
