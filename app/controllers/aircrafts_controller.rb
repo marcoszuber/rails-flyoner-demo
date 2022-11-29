@@ -1,4 +1,4 @@
-class AircraftController < ApplicationController
+class AircraftsController < ApplicationController
   before_action :set_aircraft, only: %i[show edit update destroy]
 
   def index
