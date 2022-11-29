@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>New Booking</h1>
+  <%= simple_form_for [@aircraft, @booking] do |f| %>
+    <%= f.input :user_id  %>
+    <%= f.input :start_time %>
+    <%= f.input :finish_time %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -6,9 +6,11 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
   end
 
   def new
+    @aircraft = Aircraft.find(params[:aircraft_id])
     @booking = Booking.new
   end
 
@@ -17,12 +19,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.aircraft = @aircraft
+    @booking.save
 
+=begin
     if @booking.save
       redirect_to @booking, notice: "booking was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
+=end
   end
 
   def update
