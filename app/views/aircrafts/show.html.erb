@@ -1,15 +1,16 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('background-banner.jpg');">
-  <div class="container" id="container-banner">
+<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
+  <div class="container-jb" id="container-banner-jb">
     <h1><%= @aircraft.name %></h1>
 
-    <div class="boton-avion">
-      <p><%= link_to "Book now", new_aircraft_path, class: "btn btn-light mt-5" %></p>
+
+    <div class="boton-avion-jb">
+      <p><%= link_to "Book now", new_aircraft_path, class: "btn btn-success mt-5", id: "boton-jb" %></p>
     </div>
   </div>
 </div>
 
-<div class="card-details m-5">
-  <div class="card-product-details p-2">
+<div class="card-details-jb m-5">
+  <div class="card-product-details-jb p-2">
     <h4><%= @aircraft.name %></h4>
     <p><%= @aircraft.description %></p>
     <p><%= "Seats: #{@aircraft.seats}" %></p>

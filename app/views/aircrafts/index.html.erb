@@ -1,26 +1,26 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);"> 
-  <div class="container" id="container-banner">
+<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);"> 
+  <div class="container-jb" id="container-banner-jb">
     <h1>Viaja a tu manera con Flyoner</h1> 
     <p>Elegi una de nuestras aeronaves y viví una experiencia única.</p>
   </div>
 </div>
 
-<div class="intro-products m-5">
+<div class="intro-products-jb m-5">
   <h3>Aeronaves Disponibles</h3>
   <p>Haz click para obtener mayor información sobre cada uno.</p>
 </div>
 
-<div class="card-product">
+<div class="card-product-jb">
         <% @aircrafts.each do |aircraft| %>
-          <div class="card-product-infos m-5">
-            <%= cl_image_tag aircraft.photo.key, height: 300, width: 600, crop: :fill %>
-              <div class="descripcion-avion text-start">
+          <div class="card-product-infos-jb m-5">
+            <%#= cl_image_tag aircraft.photos.last.key, height: 300, width: 600, crop: :fill %>
+              <div class="descripcion-avion-jb text-start">
                 <h4><%= aircraft.name %></h4>
                 <p><%= "Has #{aircraft.seats} seats" %></p>
               </div>
-              <div class="boton-avion">
-                <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-flat me-5" %></p>
+              <div class="boton-avion-jb">
+                <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-success me-5" %></p>
               </div>
           </div>
         <% end %>
