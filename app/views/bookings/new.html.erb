@@ -1,0 +1,33 @@
+
+
+<!--<div>
+  <%#= simple_form_for [@aircraft,@booking] do |f| %>|
+  <%#= f.date_field :start_time %>
+  <%#= f.date_field :finish_time %>
+  <%#= f.submit "Guardar", class: "btn btn-dark" %>
+  <%# end %>
+</div>-->
+
+
+<div class="container">
+  <h1>New Booking</h1>
+  <%= form_with model: [@aircraft, @booking] do |f|%>
+    <div class="">
+      <div class="">
+       <%#= f.label :Aircraft, { class: "form-label"} %>
+        <%#= f.number_field  :aircraft_id, {class: "form-control"} %>
+      </div>
+      <div class="">
+        <%= f.label :Inicio, { class: "form-label"} %>
+        <%= f.date_field :start_time, {class: "form-control"} %>
+      </div>
+      <div class="mt-1 ">
+        <%= f.label :Final, { class: "form-label"} %>
+        <%= f.date_field :finish_time, {class: "form-control"} %>
+      </div>
+      <div>
+        <%= f.submit "Guardar", class: "btn btn-dark" %>
+      </div>
+  <% end %>
+  </div>
+</div>

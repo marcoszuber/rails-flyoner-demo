@@ -1,1 +1,26 @@
-<h1>hola</h1>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);"> 
+  <div class="container" id="container-banner">
+    <h1>Viaja a tu manera con Flyoner</h1> 
+    <p>Elegi uno de nuestras aeronaves y viví una experiencia única.</p>
+  </div>
+</div>
+
+<div class="intro-products m-5">
+  <h3>Aeronaves Disponibles</h3>
+  <p>Haz click para obtener mayor información sobre cada uno.</p>
+</div>
+
+<div class="card-product">
+    
+        <% @aircrafts.each do |aircraft| %>
+          <div class="card-product-infos m-5">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"/>
+            <h4><%= aircraft.name %></h4>
+            <p><%= aircraft.seats %></p>
+            <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-flat" %></p>
+          </div>
+        <% end %>
+      
+</div>
+
