@@ -32,6 +32,8 @@ end
     description: Faker::Lorem.paragraph,
     user_id: users.sample
   )
+  aircraft_photo = URI.open("https://images.unsplash.com/photo-1597110680197-4dd3469a5270?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+  aircraft.photo.attach(io: aircraft_photo, filename: "aircraft_1.jpg")
   aircrafts << aircraft[:id]
 end
 
