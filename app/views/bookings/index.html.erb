@@ -3,10 +3,10 @@
     <thead>
       <tr>
         <th>Booking ID</th>
-        <th>Start Time</th>
-        <th>Finish Time</th>
-        <th>User ID</th>
-        <th>Aircraft ID</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>User</th>
+        <th>Aircraft</th>
         <th class="text-center" colspan="2"> Accion  </th>
       </tr>
     </thead>
@@ -14,10 +14,10 @@
       <% @bookings.each do |b| %>
         <tr>
           <td><%= b.id%></td>
-          <td><%= b.start_time%></td>
-          <td><%= b.finish_time%></td>
-          <td><%= b.user_id %></td>
-          <td><%= b.aircraft_id%></td>
+          <td><%= b.start_time.strftime("%d/%m/%Y") %></td>
+          <td><%= b.finish_time.strftime("%d/%m/%Y")%></td>
+          <td><%= b.user.first_name %></td>
+          <td><%= b.aircraft.name%></td>
           <td><%= link_to 'Show' %></td>
           <td><%= link_to 'Edit' %></td>
         </tr>
