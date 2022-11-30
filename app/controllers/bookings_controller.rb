@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.all.where(user_id: 1)
   end
 
   def show
@@ -25,8 +25,9 @@ class BookingsController < ApplicationController
     @booking.user_id = 1
 
     if @booking.save
-      redirect_to aircraft_bookings_path
+      redirect_to bookings_path
     else
+      flash[:alert] = @booking.errors.full_messages[0]
       render :new, status: :unprocessable_entity
     end
   end

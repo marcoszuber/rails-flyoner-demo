@@ -3,7 +3,8 @@
     <h1><%= @aircraft.name %></h1>
 
     <div class="boton-avion">
-      <p><%= link_to "Book now", new_aircraft_path, class: "btn btn-light mt-5" %></p>
+<!--      <p><%#= link_to "Book now", new_aircraft_path, class: "btn btn-light mt-5" %></p>-->
+      <p><%= link_to "Book now", new_aircraft_booking_path(@aircraft), class: "btn btn-light mt-5" %></p>
     </div>
   </div>
 </div>
