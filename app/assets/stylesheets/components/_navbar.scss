@@ -1,11 +1,31 @@
 
+#navbar-brand-mm {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+#navbar-brand-mm:hover {
+    color: grey !important;
+}
+
+#links-nav-mm {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    text-align: center;
+}
+
+#links-nav-mm:hover {
+    color: grey !important;
+}
 
 
-//Navbar add box shadow
-
-@media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu{ display: none; }
-  .navbar .nav-item:hover .nav-link{   }
-  .navbar .nav-item:hover .dropdown-menu{ display: block; }
-  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+#navbarDropdown {
+    border-radius: 50%;
 }

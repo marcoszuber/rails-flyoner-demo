@@ -1,22 +1,29 @@
 <header class="d-flex align-items-center justify-content-between px-4 px-md-5 bg-white overflow-auto" style="height: 109px; border-bottom: 1px solid rgba(229,231,235, 1);">
 
-  <a class="h4 link-dark text-decoration-none py-1 ms-9 me-4 my-0 text-center" href="../">Fly<b>Oner</b></a>
+  <a class="h4 link-dark text-decoration-none py-1 ms-9 me-4 my-0 text-center" id="navbar-brand-mm" href="../">Fly<b>Oner</b></a>
 
-  <%= link_to 'Aircrafts', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+  <%= link_to 'Aircrafts', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm' %>
 
-  <%= link_to 'Bookings', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+  <%= link_to 'Bookings', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm'  %>
 
 
   <div class="d-flex ms-auto">
 
     <% if user_signed_in? %>
-      <%= link_to 'Sign out', destroy_user_session_path, data:{turbo_method: :delete}, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+      <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm' %>
+      <div class="d-flex align-items-center px-9 px-md-5 bg-white">
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier"/>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
+        </div>
+      </div>
+    <% else %>
 
-    <% else
+      <%= link_to 'Log in', new_user_session_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm'%>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id: 'links-nav-mm'%>
 
-    %>
-      <%= link_to 'Log in', new_user_session_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
-      <%= link_to 'Sign up', new_user_registration_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
     <% end %>
   </div>
 </header>
