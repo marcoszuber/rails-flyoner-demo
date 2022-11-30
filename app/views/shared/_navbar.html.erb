@@ -1,17 +1,22 @@
-<body>
 <header class="d-flex align-items-center justify-content-between px-4 px-md-5 bg-white overflow-auto" style="height: 109px; border-bottom: 1px solid rgba(229,231,235, 1);">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#">Fly<b>Oner</b></a>
-  </div>
 
-  <a class="h5 link-dark text-decoration-none py-8 ms-5 me-4 my-0 text-center" href="/aircrafts">Aircrafts</a>
-  <a class="h5 link-dark text-decoration-none py-8 ms-5 me-4 my-0 text-center" href="/flights">Flights</a>
-  <a class="h5 link-dark text-decoration-none py-8 ms-5 me-4 my-0 text-center" href="/bookings">Bookings</a>
+  <a class="h4 link-dark text-decoration-none py-1 ms-9 me-4 my-0 text-center" href="../">Fly<b>Oner</b></a>
+
+  <%= link_to 'Aircrafts', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+
+  <%= link_to 'Bookings', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
 
 
   <div class="d-flex ms-auto">
-    <a class="h5 link-dark text-decoration-none py-8 ms-5 me-4 my-0 text-center" href="/users/sign_in">Log in</a>
-    <a class="h5 link-dark text-decoration-none py-8 ms-5 me-4 my-0 text-center" href="/users/sign_up">Sign up</a>
+
+    <% if user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path, data:{turbo_method: :delete}, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+
+    <% else
+
+    %>
+      <%= link_to 'Log in', new_user_session_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+      <%= link_to 'Sign up', new_user_registration_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center' %>
+    <% end %>
   </div>
 </header>
-</body>
