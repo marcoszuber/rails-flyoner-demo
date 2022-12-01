@@ -1,19 +1,18 @@
 <div>
-
+  <h1> Show </h1>
   <%= form_with model: @booking  do |form| %>
 
-    <div class="container border p-4 rounded shadow">
-      <h1 class="text-center"> Boarding Pass </h1>
+    <div class="container">
       <div class="row g-2 mb-1">
         <div class="col-md">
           <div class="form-floating mb-1">
-            <%= form.date_field :start_time, class: "form-control", disabled: true%>
+            <%= form.date_field :start_time, class: "form-control"%>
             <%= form.label :Fecha_Salida %>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating mb-1">
-            <%= form.date_field :finish_time, class: "form-control", disabled: true%>
+            <%= form.date_field :finish_time, class: "form-control"%>
             <%= form.label :Fecha_Llegada %>
           </div>
         </div>
@@ -23,7 +22,8 @@
         <div class="row g-2 mb-1">
           <div class="col-md">
             <div class="form-floating mb-1">
-              <%= form.collection_select(:aircraft_id, Aircraft.all, :id, :name, {:prompt => 'Seleccione'}, class: "form-select", id: "Seleccione" , disabled: true) %>
+              <%= form.text_field :aircraft, class: "form-control"%>
+              <%#= form.text_field(:aircraft.name, Aircraft.all, class: "form-control")%>
               <%= form.label :Aircraft %>
             </div>
           </div>
@@ -35,13 +35,13 @@
         <div class="row g-2 mb-1">
           <div class="col-md">
             <div class="form-floating mb-1">
-              <%= form.collection_select(:aircraft_id, Aircraft.all, :id, :description, {:prompt => 'Seleccione'}, class: "form-select", id: "Seleccione", disabled: true) %>
+              <%= form.text_field :aircraft, class: "form-control" %>
               <%= form.label :Descriptions %>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   <% end %>
-
 </div>
