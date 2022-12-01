@@ -5,9 +5,10 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Booking.destroy_all
 Aircraft.destroy_all
 User.destroy_all
-Booking.destroy_all
+
 
 puts "Creating with faker"
 users = []
@@ -32,8 +33,8 @@ end
     description: Faker::Lorem.paragraph,
     user_id: users.sample
   )
-  aircraft_photo = URI.open("https://images.unsplash.com/photo-1597110680197-4dd3469a5270?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
-  #aircraft.photo.attach(io: aircraft_photo, filename: "aircraft_1.jpg")
+  aircraft_photo = URI.open("http://images.unsplash.com/photo-1597110680197-4dd3469a5270?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+  aircraft.photos.attach(io: aircraft_photo, filename: "aircraft_1.jpg", content_type: "image/jpg")
   aircrafts << aircraft[:id]
 end
 
