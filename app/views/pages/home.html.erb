@@ -30,11 +30,17 @@
 
   <div class="row justify-content-between mt-5">
     <% @aircrafts.each do |aircraft| %>
-      <div class="col-4 my-2">
-      <%=  %>
-        <div class="card card-intro-mrz card-intro-mrz1" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
-          <h2><strong><%= aircraft.name %></strong></h2>
-          <p><%= link_to "See Aircraft", aircraft_path(aircraft), class: "btn btn-dark me-5" %></p>
+      <div class="col-4 my-2 card text-bg-dark card-intro-mrz1 rounded-2">
+        <% if aircraft.photos.last %> 
+          <%= image_tag aircraft.photos.last, alt: aircraft.name, class: "card-img", style: 'filter: brightness(0.5); background-size: cover; position:relative;'%>
+        <% end %>
+        
+        <div class="card-img-overlay  ">
+          <div>
+            <h2 class=""><strong><%= aircraft.name %></strong></h2>
+
+            <p class="align-self-baseline"><%= link_to "See Aircraft", aircraft_path(aircraft), class: "btn btn-dark me-5" %></p> 
+          </div>
         </div>
       </div>
     <% end %>
@@ -50,7 +56,7 @@
 
         <a href="http://www.github.com/pgallardo2018" class="stretched-link"></a>
         <div></div>
-        <div style="margin-bottom: -25px;">
+        <div style="margin-left: 10px;">
           <p style="margin-bottom: -4px;">co-founder, CTO</p>
           <h2><strong>Patricio Gallardo</strong></h2>
         </div>
@@ -60,7 +66,7 @@
       <div class="card card-intro-mrz card-intro-mrz2" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.4)), url(<%= asset_path("jbr.jpeg") %>);">
         <a href="http://www.github.com/jbrodriguez1" class="stretched-link"></a>
         <div></div>
-        <div style="margin-bottom: -25px;">
+        <div style="margin-left: 10px;">
           <p style="margin-bottom: -4px;">co-founder, CCO</p>
           <h2><strong>Juan Bautista Rodriguez</strong></h2>
         </div>
@@ -70,7 +76,7 @@
       <div class="card card-intro-mrz card-intro-mrz2" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.4)), url(<%= asset_path("mm.jpeg") %>);">
         <a href="http://www.github.com/hellboy222" class="stretched-link"></a>
         <div></div>
-        <div style="margin-bottom: -25px;">
+        <div style="margin-left: 10px;">
           <p style="margin-bottom: -4px;">co-founder, CFO</p>
           <h2><strong>Matias Migueles</strong></h2>
         </div>
@@ -80,7 +86,7 @@
       <div class="card card-intro-mrz card-intro-mrz2" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.4)), url(<%= asset_path("mrz.JPG") %>);">
         <a href="http://www.github.com/marcoszuber" class="stretched-link"></a>
         <div></div>
-        <div style="margin-bottom: -25px;">
+        <div style="margin-left: 10px;">
           <p style="margin-bottom: -4px;">co-founder, CEO</p>
           <h2><strong>Marcos Zuberbuhler</strong></h2>
         </div>

@@ -1,6 +1,6 @@
 <div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>); height: 800px; background-size: cover;">
   <div class="container">
-    <h1 class="pt-5">New Booking</h1>
+    <h1 class="pt-5">edit Booking</h1>
       <%= form_with model: [@aircraft, @booking] do |f|%>
         <div class="card shadow p-3 rounded-4">
           <div class="">
@@ -8,11 +8,11 @@
             <%#= f.number_field  :aircraft_id, {class: "form-control"} %>
           </div>
           <div class="">
-            <%= f.label :Departure, { class: "form-label"} %>
+            <%= f.label :Salida, { class: "form-label"} %>
             <%= f.date_field(:start_time, class: "form-control", value: Date.today) %>
           </div>
           <div class="mt-1 ">
-            <%= f.label :Arrival, { class: "form-label"} %>
+            <%= f.label :LLegada, { class: "form-label"} %>
             <%= f.date_field(:finish_time, class: "form-control") %>
           </div>
           <div class="mt-2">

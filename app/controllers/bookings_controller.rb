@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
@@ -28,6 +29,9 @@ class BookingsController < ApplicationController
       redirect_to bookings_path
     else
       flash[:alert] = @booking.errors.full_messages[0]
+
+      # @alert = "ups algo a salido mal, estas intentando de bookear fechas ya bookeadas o estan mal las fechas"
+      # flash[:alert] = @alert
       render :new, status: :unprocessable_entity
     end
   end
