@@ -13,7 +13,7 @@ puts "Creating with faker"
 users = []
 aircrafts = []
 
-5.times do
+6.times do
   user = User.create!(
     email: Faker::Internet.email,
     password: "123456adasdasd*",
@@ -24,7 +24,7 @@ aircrafts = []
   users << user[:id]
 end
 
-5.times do
+6.times do
   aircraft = Aircraft.create!(
     name: Faker::Vehicle.make_and_model,
     seats: rand(1..10),
@@ -33,13 +33,13 @@ end
     user_id: users.sample
   )
   aircraft_photo = URI.open("https://images.unsplash.com/photo-1597110680197-4dd3469a5270?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
-  aircraft.photo.attach(io: aircraft_photo, filename: "aircraft_1.jpg")
+  #aircraft.photo.attach(io: aircraft_photo, filename: "aircraft_1.jpg")
   aircrafts << aircraft[:id]
 end
 
 
 
-5.times do
+6.times do
   Booking.create!(
     start_time: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     finish_time: Faker::Time.between(from: DateTime.now, to: DateTime.now + 1),

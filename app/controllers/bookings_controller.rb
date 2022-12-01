@@ -21,8 +21,8 @@ class BookingsController < ApplicationController
     @aircraft = Aircraft.find(params[:aircraft_id])
     @booking = Booking.new(booking_params)
     @booking.aircraft = @aircraft
-    #@booking.user = current_user
-    @booking.user_id = 1
+    @booking.user = current_user
+    #@booking.user_id = 1
 
     if @booking.save
       redirect_to bookings_path
