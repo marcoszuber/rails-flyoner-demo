@@ -1,5 +1,6 @@
 class AircraftsController < ApplicationController
   before_action :set_aircraft, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     if params[:finish_time].present? 
@@ -24,7 +25,7 @@ class AircraftsController < ApplicationController
 
   def create
     @aircraft = Aircraft.new(aircraft_params)
-
+    @aircraft.user = current_user
     if @aircraft.save
       redirect_to @aircraft, notice: "aircraft was successfully created."
     else

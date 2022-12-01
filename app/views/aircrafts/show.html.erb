@@ -1,6 +1,6 @@
 <div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
   <div class="container-jb" id="container-banner-jb">
-    <h1><%= @aircraft.name %></h1>
+    <h1><%= @aircraft.name.capitalize %></h1>
 
 
     <div class="boton-avion-jb">
@@ -10,9 +10,33 @@
 </div>
 
 <div class="card-details-jb m-5">
-  <div class="card-product-details-jb p-2">
-    <h4><%= @aircraft.name %></h4>
-    <p><%= @aircraft.description %></p>
-    <p><%= "Seats: #{@aircraft.seats}" %></p>
+  <div class="card-product-details-jb d-flex py-0">
+    <div>
+      <%= cl_image_tag(@aircraft.photos.last.key) %>
+    </div>  
+    <div class="row ps-3 pt-2">
+      <h4><%= @aircraft.name.capitalize %></h4>
+      <p><em><%= @aircraft.description.capitalize %></em></p>
+      <p><%= "Available Seats: #{@aircraft.seats}" %></p>
+      <p><%= "USD #{@aircraft.price}" %></p>
+    </div>
   </div>
 </div>
+
+<div class="ms-5">
+  <br>
+  <br>
+  
+  <h2>More pictures about this Aircraft</h2>
+
+
+  <div class="container images-show-jb d-flex justify-content-start my-5">
+
+    <% @aircraft.photos.each do |photo| %>
+      <%= cl_image_tag(photo.key) %>
+    <% end %>
+
+  </div>
+</div>
+
+<%#= cl_image_tag(@aircraft.photos.first.key, height: 300, width: 300) %>
