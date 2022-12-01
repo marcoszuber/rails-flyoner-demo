@@ -9,6 +9,7 @@
 
 
   <div class="d-flex ms-auto">
+    <%= link_to 'New Aircraft', new_aircraft_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm' %>
     <%= link_to 'Aircrafts', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm' %>
     <% if user_signed_in? %>
     <%= link_to 'Bookings', bookings_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id:'links-nav-mm'  %>

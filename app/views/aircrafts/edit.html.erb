@@ -1,6 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
 <div class="container p-5">
-  <h1><%= sanitize("<strong>Create</strong> New Aircraft") %></h1>
+  <h1><%= sanitize("<strong>Edit:</strong> #{@aircraft.name}") %></h1>
   <div class="card p-5 radius-10">
     <%= simple_form_for(@aircraft) do |f| %>
       <%= f.input :name %>
@@ -8,9 +8,7 @@
       <%= f.input :seats %>
       <%= f.input :price %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <%= f.submit "Create", class: "btn btn-dark mt-3 p-2 boton-submit-jb" %>
+      <%= f.submit "Edit", class: "btn btn-dark mt-3 p-2 boton-submit-jb" %>
     <% end %>
   </div>
 </div>
