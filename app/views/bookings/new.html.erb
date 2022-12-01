@@ -1,29 +1,32 @@
-<div class="container">
-  <h1>New Booking</h1>
-  <div>
-    <% flash.each do |type, msg| %>
-      <div class="alert alert-danger" role="alert">
-        <%= msg %>
-      </div>
-    <% end %>
-  </div>
-  <%= form_with model: [@aircraft, @booking] do |f|%>
-    <div class="border shadow p-3 rounded-4">
-      <div class="">
-       <%#= f.label :Aircraft, { class: "form-label"} %>
-        <%#= f.number_field  :aircraft_id, {class: "form-control"} %>
-      </div>
-      <div class="">
-        <%= f.label :Salida, { class: "form-label"} %>
-        <%= f.date_field(:start_time, class: "form-control", value: Date.today) %>
-      </div>
-      <div class="mt-1 ">
-        <%= f.label :LLegada, { class: "form-label"} %>
-        <%= f.date_field(:finish_time, class: "form-control") %>
-      </div>
-      <div class="mt-2">
-        <%= f.submit "Guardar", class: "btn btn-dark" %>
-      </div>
-  <% end %>
+<div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>); height: 800px; background-size: cover;">
+  <div class="container">
+    <h1 class="pt-5">New Booking</h1>
+    <div>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-danger" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
+    </div>
+
+      <%= form_with model: [@aircraft, @booking] do |f|%>
+        <div class="card shadow p-3 rounded-4">
+          <div class="">
+          <%#= f.label :Aircraft, { class: "form-label"} %>
+            <%#= f.number_field  :aircraft_id, {class: "form-control"} %>
+          </div>
+          <div class="">
+            <%= f.label :Salida, { class: "form-label"} %>
+            <%= f.date_field(:start_time, class: "form-control", value: Date.today) %>
+          </div>
+          <div class="mt-1 ">
+            <%= f.label :LLegada, { class: "form-label"} %>
+            <%= f.date_field(:finish_time, class: "form-control") %>
+          </div>
+          <div class="mt-2">
+            <%= f.submit "Guardar", class: "btn btn-dark" %>
+          </div>
+      <% end %>
+    </div>
   </div>
 </div>
