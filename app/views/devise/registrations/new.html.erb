@@ -23,6 +23,7 @@
           <%= f.input :first_name, required: true %>
           <%= f.input :last_name, required: true %>
           <%= f.input :dni, required: true %>
+          <%= f.input :photo, as: :file, input_html: { multiple: false } %>
         </div>
 
 
