@@ -28,6 +28,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Remote: ruby Le Wagon" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actioncable (v7.0.4, Remote: ruby Le Wagon) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailbox (v7.0.4, Remote: ruby Le Wagon) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v7.0.4, Remote: ruby Le Wagon) [gem]" level="application" />
@@ -106,7 +107,6 @@
     <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, Remote: ruby Le Wagon) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, Remote: ruby Le Wagon) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.6.6, Remote: ruby Le Wagon) [gem]" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />
@@ -186,6 +186,11 @@
         <option value="test_unit:plugin" />
         <option value="test_unit:scaffold" />
       </list>
+    </option>
+  </component>
+  <component name="RakeTasksCache">
+    <option name="myRootTask">
+      <RakeTaskImpl id="rake" />
     </option>
   </component>
 </module>
