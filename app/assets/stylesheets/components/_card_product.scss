@@ -45,6 +45,7 @@
   width: 200px;
 }
 
+
 .boton-submit-jb {
   color: white;
   width: 100px;
@@ -56,4 +57,8 @@
 .images-show-jb {
   padding-left: 0;
   margin-left: 0;
+}
+.card:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,1);
+
 }

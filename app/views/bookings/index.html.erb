@@ -18,8 +18,8 @@
           <td><%= b.finish_time.strftime("%d/%m/%Y")%></td>
           <td><%= b.user.first_name %></td>
           <td><%= b.aircraft.name%></td>
-          <td><%= link_to 'Show' %></td>
-          <td><%= link_to 'Edit' %></td>
+          <td><%= link_to 'Boarding', booking_path(b) %></td>
+          <td><%= link_to 'Edit', edit_booking_path(b) %></td>
         </tr>
       <% end %>
     </tbody>
