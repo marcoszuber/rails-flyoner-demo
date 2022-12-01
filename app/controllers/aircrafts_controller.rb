@@ -2,7 +2,14 @@ class AircraftsController < ApplicationController
   before_action :set_aircraft, only: %i[show edit update destroy]
 
   def index
-    @aircrafts = Aircraft.all
+    if params[:finish_time].present? 
+      start_date = params[:start_time].try(:to_date) || DateTime.now
+      end_date = params[:finish_time].try(:to_date) || DateTime.now + 30.days
+      bookings = Booking.where(start_time: start_date..end_date).or(Booking.where(finish_time: start_date..end_date))
+      @aircrafts = Aircraft.where.not(id: bookings.map(&:aircraft_id))
+    else
+      @aircrafts = Aircraft.all
+    end
   end
 
   def show

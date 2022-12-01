@@ -1,14 +1,6 @@
 <div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>); height: 800px; background-size: cover;">
   <div class="container">
     <h1 class="pt-5">New Booking</h1>
-    <div>
-      <% flash.each do |type, msg| %>
-        <div class="alert alert-danger" role="alert">
-          <%= msg %>
-        </div>
-      <% end %>
-    </div>
-
       <%= form_with model: [@aircraft, @booking] do |f|%>
         <div class="card shadow p-3 rounded-4">
           <div class="">
