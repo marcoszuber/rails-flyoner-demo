@@ -7,8 +7,10 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :dni, presence: true, uniqueness: true
+  validates :photo, presence: true
   has_many :aircrafts, dependent: :destroy
   has_many :bookings, dependent: :destroy
 
   has_one_attached :photo
+
 end
