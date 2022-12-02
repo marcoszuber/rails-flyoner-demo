@@ -3,6 +3,7 @@
   <%= link_to sanitize('Fly<strong>Oner</strong>'), root_path, class: "h4 link-dark text-decoration-none py-1 ms-9 my-0 text-center", id: "navbar-brand-mm" %>
 
 
+
   <%= link_to 'Aircrafts', aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id: 'links-nav-mm' %>
   <% if user_signed_in? %>
     <%= link_to 'Rent your aircraft', new_aircraft_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id: 'links-nav-mm' %>

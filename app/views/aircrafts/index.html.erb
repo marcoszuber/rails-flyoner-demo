@@ -34,23 +34,28 @@
   <div class="card-product-jb">
           <% @aircrafts.each do |aircraft| %>
             <div class="card-product-infos-jb my-5">
+            <% if aircraft.photos.last %>
+              <%= cl_image_tag aircraft.photos.last.key, class: "img-fluid" %> 
+            <% else %>
+              <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
+            <% end %>
+             
                 <div class="descripcion-avion-jb text-start">
                   <h4><%= aircraft.name.capitalize %></h4>
                   <p><%= "Has #{aircraft.seats} seats" %></p>
                 </div>
-                <div class="container d-flex">
-
+                <div class="d-flex justify-content-end">
+                  <% if Aircraft.find(aircraft.id).user == current_user && aircraft.bookings.empty? %>
+                    <div class="boton-avion-jb">
+                      <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-warning me-2" %></p>
+                    </div>
+                    <div class="boton-avion-jb">
+                      <p><%= link_to "Delete", aircraft_path(aircraft), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger me-5" %></p>
+                    </div>
+                  <% end %>
                   <div class="boton-avion-jb">
                     <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %></p>
-                  </div>
-                  <div>
-                    <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-light me-2" %></p>
-                  </div>
-                    <div>
-                      <% if aircraft.bookings.blank? %>
-                        <p><%= link_to "Delete", aircraft_path(aircraft), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-light me-5" %></p>
-                      <% end %>
-                    </div>
+                  </div>                 
                 </div>
             </div>
           <% end %>

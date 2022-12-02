@@ -15,7 +15,7 @@ class Booking < ApplicationRecord
   private
 
   def validate_other_booking_overlap
-    other_bookings = Booking.all
+    other_bookings = Booking.where(aircraft_id: aircraft_id).where.not(id: id)
     is_overlapping = other_bookings.any? do |other_booking|
       period.overlaps?(other_booking.period)
     end
