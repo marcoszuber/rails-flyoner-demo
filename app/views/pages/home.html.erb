@@ -34,7 +34,6 @@
     <% @aircrafts.each do |aircraft| %>
       <div class="col-4 my-2">
         <% if aircraft.photos.last %> 
-        <% aircraft_photo = asset_path("background-banner.jpg") %>
           <% aircraft_photo = url_for(aircraft.photos.last) %>
         <% else %>
           <% aircraft_photo = asset_path("background-banner.jpg") %>
