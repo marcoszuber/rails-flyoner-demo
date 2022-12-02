@@ -40,6 +40,7 @@ class BookingsController < ApplicationController
     if @booking.update(booking_params)
       redirect_to @booking, notice: "booking was successfully updated."
     else
+      flash[:alert] = @booking.errors.full_messages[0]
       render :edit, status: :unprocessable_entity
     end
   end
