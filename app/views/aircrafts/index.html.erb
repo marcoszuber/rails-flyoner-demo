@@ -1,7 +1,7 @@
 
-<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);"> 
+<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
   <div class="container-jb" id="container-banner-jb">
-    <h1>Viaja a tu manera con Flyoner</h1> 
+    <h1>Viaja a tu manera con Flyoner</h1>
     <p>Elegi una de nuestras aeronaves y viví una experiencia única.</p>
   </div>
 </div>
@@ -35,11 +35,11 @@
           <% @aircrafts.each do |aircraft| %>
             <div class="card-product-infos-jb my-5">
             <% if aircraft.photos.last %>
-              <%= cl_image_tag(aircraft.photos.last.key, class: "img-fluid") %> 
+              <%= cl_image_tag(aircraft.photos.last.key, class: "img-fluid") %>
             <% else %>
               <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
             <% end %>
-             
+
                 <div class="descripcion-avion-jb text-start">
                   <h4><%= aircraft.name.capitalize %></h4>
                   <p><%= "Has #{aircraft.seats} seats" %></p>
@@ -55,7 +55,7 @@
                   <% end %>
                   <div class="boton-avion-jb">
                     <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %></p>
-                  </div>                 
+                  </div>
                 </div>
             </div>
           <% end %>
