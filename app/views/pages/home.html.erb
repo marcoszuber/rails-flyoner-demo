@@ -34,7 +34,8 @@
     <% @aircrafts.each do |aircraft| %>
       <div class="col-4 my-2">
         <% if aircraft.photos.last %> 
-          <% aircraft_photo = image_tag aircraft.photos.last, alt: aircraft.name, class: "card-img", style: 'filter: brightness(0.5); background-size: cover; position:relative;'%>
+        <% aircraft_photo = asset_path("background-banner.jpg") %>
+          <% aircraft_photo = url_for(aircraft.photos.last) %>
         <% else %>
           <% aircraft_photo = asset_path("background-banner.jpg") %>
         <% end %>

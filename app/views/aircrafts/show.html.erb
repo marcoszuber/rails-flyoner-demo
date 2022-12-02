@@ -12,7 +12,10 @@
 <div class="card-details-jb m-5">
   <div class="card-product-details-jb d-flex py-0">
     <div>
+    <% if @aircraft.photos.last != nil %>
       <%= cl_image_tag(@aircraft.photos.last.key) %>
+    <% end %>
+      
     </div>  
     <div class="row ps-3 pt-2">
       <h4><%= @aircraft.name.capitalize %></h4>
