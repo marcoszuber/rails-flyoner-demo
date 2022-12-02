@@ -35,7 +35,7 @@
           <% @aircrafts.each do |aircraft| %>
             <div class="card-product-infos-jb my-5">
             <% if aircraft.photos.last %>
-              <%= cl_image_tag aircraft.photos.last.key, class: "img-fluid" %> 
+              <%= cl_image_tag(aircraft.photos.last.key, class: "img-fluid") %> 
             <% else %>
               <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
             <% end %>
