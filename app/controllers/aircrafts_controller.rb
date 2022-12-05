@@ -1,6 +1,7 @@
 class AircraftsController < ApplicationController
   before_action :set_aircraft, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
+  
 
   def index
     if params[:finish_time].present? 
@@ -14,6 +15,7 @@ class AircraftsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new

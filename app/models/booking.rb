@@ -1,7 +1,9 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :aircraft
-
+  has_one :empty_leg, dependent: :destroy
+  has_one :review_aircraft, dependent: :destroy
+  has_one :payment, dependent: :destroy
   validates :start_time, presence: true
   validates :finish_time, presence: true
 

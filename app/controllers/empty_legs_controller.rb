@@ -1,0 +1,2 @@
+class EmptyLegsController < ApplicationController
+end

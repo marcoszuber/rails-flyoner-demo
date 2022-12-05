@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
 
       # @alert = "ups algo a salido mal, estas intentando de bookear fechas ya bookeadas o estan mal las fechas"
       # flash[:alert] = @alert
-      render :new, status: :unprocessable_entity
+      render "aircrafts/show", status: :unprocessable_entity
     end
   end
 

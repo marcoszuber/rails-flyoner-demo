@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_183758) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_200616) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_183758) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status"
     t.index ["user_id"], name: "index_aircrafts_on_user_id"
   end
 
@@ -60,8 +61,51 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_183758) do
     t.bigint "aircraft_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "from"
+    t.string "to"
+    t.bigint "empty_leg_id"
+    t.bigint "review_aircraft_id"
+    t.bigint "payment_id"
     t.index ["aircraft_id"], name: "index_bookings_on_aircraft_id"
+    t.index ["empty_leg_id"], name: "index_bookings_on_empty_leg_id"
+    t.index ["payment_id"], name: "index_bookings_on_payment_id"
+    t.index ["review_aircraft_id"], name: "index_bookings_on_review_aircraft_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "empty_legs", force: :cascade do |t|
+    t.string "from"
+    t.string "to"
+    t.datetime "date"
+    t.integer "seat_available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.string "status"
+    t.string "status_detail"
+    t.integer "merchant_order_id"
+    t.string "processing_mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "review_aircrafts", force: :cascade do |t|
+    t.float "stars"
+    t.text "description"
+    t.bigint "aircraft_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["aircraft_id"], name: "index_review_aircrafts_on_aircraft_id"
+    t.index ["user_id"], name: "index_review_aircrafts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +119,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_183758) do
     t.string "first_name"
     t.string "last_name"
     t.string "dni"
+    t.boolean "owner"
+    t.boolean "client"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -83,5 +129,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_183758) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "aircrafts", "users"
   add_foreign_key "bookings", "aircrafts"
+  add_foreign_key "bookings", "empty_legs"
+  add_foreign_key "bookings", "payments"
+  add_foreign_key "bookings", "review_aircrafts"
   add_foreign_key "bookings", "users"
+  add_foreign_key "review_aircrafts", "aircrafts"
 end

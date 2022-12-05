@@ -1,0 +1,2 @@
+class ReviewAircraftsController < ApplicationController
+end
