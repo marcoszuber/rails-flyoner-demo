@@ -8,39 +8,60 @@
     </div>
   </div>
 </div>
+<div class="">
+  <div class="d-flex justify-content-center">
+    <div class="container row"> 
 
-<div class="card-details-jb m-5">
-  <div class="card-product-details-jb d-flex py-0">
-    <div>
-    <% if @aircraft.photos.last != nil %>
-      <%= cl_image_tag(@aircraft.photos.last.key, :width=>300) %>
-    <% end %>
 
-    </div>
-    <div class="row ps-3 pt-2">
-      <h4><%= @aircraft.name.capitalize %></h4>
-      <p><em><%= @aircraft.description.capitalize %></em></p>
-      <p><%= "Available Seats: #{@aircraft.seats}" %></p>
-      <p><%= "USD #{@aircraft.price}" %></p>
+      <div class="card-details-jb my-5 col-8 ">
+        <div class="card-product-details-jb d-flex py-0">
+          <div>
+          <% if @aircraft.photos.last != nil %>
+            <%= cl_image_tag(@aircraft.photos.last.key, :width=>300) %>
+          <% end %>
+          </div>
+          <div class="row ps-3 pt-2">
+            <h4><%= @aircraft.name.capitalize %></h4>
+            <p><em><%= @aircraft.description.capitalize %></em></p>
+            <p><%= "Available Seats: #{@aircraft.seats}" %></p>
+            <p><%= "USD #{@aircraft.price}" %></p>
+          </div>
+        </div>
+        <div class="my-5">
+          <h2>More pictures about this Aircraft</h2>
+          <div class=" row my-5">
+            <% @aircraft.photos.each do |photo| %>
+              <div class="col-3">
+                <%= cl_image_tag(photo.key, :width=>300) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mt-5 card p-3 rounded-4"> 
+          <%= form_with model: [@aircraft, @booking], data: { controller: "price-updater" }, method: :post, name: "booking" do |form| %>
+            <div class=" m-1">
+              <label for="start_time">Start time</label>
+              <%= form.date_field :start_time, data: { target: "price-updater.startTime", action: "price-updater#changePrice" }, class: "form-control", placeholder: "Start Time", value: Date.today %>
+            </div>
+            <div class=" m-1">
+              <label for="finish_time">Finish time</label>
+              <%= form.date_field :finish_time, data: { target: "price-updater.finishTime", action: "price-updater#changePrice" }, class: "form-control", placeholder: "Finish Time", value: Date.today %>
+              <div class="d-flex justify-content-between align-items-end">
+                <div class="col-1 m-1 mt-4">
+                  <%= form.submit "Submit Booking", class: "btn btn-dark" %>
+                </div>
+                <div class="d-flex align-items-center">
+                  <span data-target="price-updater.price" data-price="<%=@aircraft.price%>"></span>
+                  <p class=" align-items-center"><strong>USD<p data-price-updater-target="output"></p></strong></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-
-<div class="ms-5">
-  <br>
-  <br>
-
-  <h2>More pictures about this Aircraft</h2>
-
-
-  <div class="container images-show-jb d-flex justify-content-start my-5">
-
-    <% @aircraft.photos.each do |photo| %>
-      <%= cl_image_tag(photo.key, :width=>500) %>
-    <% end %>
-
-  </div>
-</div>
-
 <%#= cl_image_tag(@aircraft.photos.first.key, height: 300, width: 300) %>
