@@ -79,4 +79,4 @@ end
 gem "devise"
 gem "faker"
 gem "cloudinary"
-
+gem 'cancancan'

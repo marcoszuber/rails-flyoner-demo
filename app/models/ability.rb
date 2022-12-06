@@ -1,0 +1,37 @@
+# frozen_string_literal: true
+
+class Ability
+  include CanCan::Ability
+
+
+  def initialize(user)
+    user ||= User.new # guest user (not logged in)
+
+    if user.owner?
+      can :update, Aircraft, user: user # Only owner can update his own aircraft
+      can :create, Aircraft # Only owner can create new aircraft
+      can :read, Aircraft
+      can :read, Booking
+      can :read, EmptyLeg
+      can [:read, :update], Booking, aircraft: { user: user }
+      can :update, EmptyLeg, aircraft: { user: user }
+      can :create, EmptyLeg
+      can :read, ReviewAircraft
+      can :create, Feedback
+      can :destroy, Aircraft, user: user
+    elsif user.client?
+      can [:read, :update], Booking, user: user
+      can :create, Booking
+      can :read, EmptyLeg
+      can :create, ReviewAircraft
+      can :update, ReviewAircraft, user: user
+      can :read, Aircraft
+      can :create, Feedback
+    else # guest user (not logged in)
+      can :read, Aircraft
+      can :read, EmptyLeg
+      can :read, ReviewAircraft
+      can :create, Feedback
+    end
+  end
+end
