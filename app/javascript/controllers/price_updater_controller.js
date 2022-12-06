@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="price-updater"
 export default class extends Controller {
   static targets = [  "startTime", "finishTime", "output",  "price"  ]
-  
+
 
 
   connect() {
@@ -12,13 +12,13 @@ export default class extends Controller {
   }
 
 
-  changePrice(event) {    
+  changePrice(event) {
     let startTime = new Date(this.startTimeTarget.value).getTime()
     let endTime = new Date(this.finishTimeTarget.value).getTime()
-    let days = Math.abs(endTime - startTime) / (1000 * 60 * 60 * 24)
+    let days = Math.abs(endTime - startTime) / (1000 * 60 * 60 * 24) + 1
     let price = this.priceTarget.dataset.price
-    let total = price * days
-    let formattedNumber = total.toLocaleString('de-DE')
-    this.outputTarget.innerText = formattedNumber
+    let total = price * days || 0
+    let formattedNumber = total.toLocaleString('de-DE') + " USD"
+    this.outputTarget.innerHTML = `<b>  ${formattedNumber}  </b>`;
   }
 }

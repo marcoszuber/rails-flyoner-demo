@@ -54,7 +54,12 @@
                     </div>
                   <% end %>
                   <div class="boton-avion-jb">
-                    <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %></p>
+                      <%= form_tag aircraft_path(aircraft), method: :get do %>
+                        <%= hidden_field_tag :start_time, params[:start_time] %>
+                        <%= hidden_field_tag :finish_time, params[:finish_time] %>
+                        <%= submit_tag "Book now", class: "btn btn-dark me-2" %>
+                      <% end %>
+                    <%#= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %>
                   </div>
                 </div>
             </div>

@@ -1,4 +1,10 @@
 class EmptyLegsController < ApplicationController
+
+  load_and_authorize_resource
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
+
   before_action :set_empty_leg, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
@@ -56,5 +62,6 @@ class EmptyLegsController < ApplicationController
 
   def empty_leg_params
     params.require(:empty_leg).permit(:name, :seats, :price, :description, photos: [])
+
   end
 end

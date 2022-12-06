@@ -1,4 +1,11 @@
 class ReviewAircraftsController < ApplicationController
+
+  load_and_authorize_resource
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
+  end
+
     before_action :set_review_aircraft, only: %i[show edit update destroy]
     skip_before_action :authenticate_user!, only: %i[index show]
     
@@ -54,6 +61,7 @@ class ReviewAircraftsController < ApplicationController
     def review_aircraft_params
       params.require(:review_aircraft).permit(:stars, :description)
     end
+
 end
 
 #t.float "stars"
