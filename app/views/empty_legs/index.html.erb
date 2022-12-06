@@ -26,5 +26,17 @@
     <% end %>
   </div>
   <div class="intro-products-jb my-5">
-    <h3>Available Empty Legs</h3>
+
+
+    <h1>Available Empty Legs</h1>
+
+    <% @empty_legs.each do |empty_leg| %>
+      <p>From: <%= empty_leg.from %></p>
+      <p>To: <%= empty_leg.to %></p>
+      <p>Date: <%= empty_leg.date %></p>
+      <p>Seats Available: <%= empty_leg.seat_available %></p>
+      <hr>
+    <% end %>
+
   </div>
+</div>
