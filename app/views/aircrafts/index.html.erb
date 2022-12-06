@@ -1,8 +1,8 @@
 
-<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);"> 
+<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
   <div class="container-jb" id="container-banner-jb">
-    <h1>Viaja a tu manera con Flyoner</h1> 
-    <p>Elegi una de nuestras aeronaves y viví una experiencia única.</p>
+    <h1>Travel your way with Flyoner</h1>
+    <p>Choose one of our aircraft and experience a unique journey.</p>
   </div>
 </div>
 <div class="container">
@@ -11,11 +11,11 @@
     <%= form_tag aircrafts_path, class: "d-flex nav-search justify-content-between", method: :get do %>
       <div class="col-5 m-1">
         <label for="start_time">Start time</label>
-        <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time", value: Date.today%>
+        <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time"%>
       </div>
       <div class="col-5 m-1">
         <label for="finish_time">Finish time</label>
-        <%= date_field_tag :finish_time, params[:finish_time], class: "form-control ", placeholder: "finish Time", value: Date.today %>
+        <%= date_field_tag :finish_time, params[:finish_time], class: "form-control ", placeholder: "finish Time" %>
       </div>
       <div class="col-1 m-1">
         <label for="finish_time">Seats</label>
@@ -35,11 +35,11 @@
           <% @aircrafts.each do |aircraft| %>
             <div class="card-product-infos-jb my-5">
             <% if aircraft.photos.last %>
-              <%= cl_image_tag aircraft.photos.last.key, class: "img-fluid" %> 
+              <%= cl_image_tag(aircraft.photos.last.key, class: "img-fluid") %>
             <% else %>
               <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
             <% end %>
-             
+
                 <div class="descripcion-avion-jb text-start">
                   <h4><%= aircraft.name.capitalize %></h4>
                   <p><%= "Has #{aircraft.seats} seats" %></p>
@@ -54,8 +54,13 @@
                     </div>
                   <% end %>
                   <div class="boton-avion-jb">
-                    <p><%= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %></p>
-                  </div>                 
+                      <%= form_tag aircraft_path(aircraft), method: :get do %>
+                        <%= hidden_field_tag :start_time, params[:start_time] %>
+                        <%= hidden_field_tag :finish_time, params[:finish_time] %>
+                        <%= submit_tag "Book now", class: "btn btn-dark me-2" %>
+                      <% end %>
+                    <%#= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %>
+                  </div>
                 </div>
             </div>
           <% end %>

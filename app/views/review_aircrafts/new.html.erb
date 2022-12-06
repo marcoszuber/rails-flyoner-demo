@@ -1,0 +1,12 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
+<div class="container p-5">
+  <h1><%= sanitize("<strong>Create</strong> Review") %></h1>
+  <div class="card p-5 radius-10">
+    <%= simple_form_for [@booking, @review_aircraft] do |f| %>
+      <%= f.input :stars, label: false %>
+      <%= f.input :description %>
+      <%= f.submit "Submit", class: "btn btn-dark mt-3 p-2 boton-submit-jb" %>
+    <% end %>
+  </div>
+</div>
+</div>
