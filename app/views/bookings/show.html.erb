@@ -2,7 +2,7 @@
 
   <%= form_with model: @booking  do |form| %>
 
-    <div class="container border p-4 rounded shadow">
+    <div class="container border p-4 mt-4 rounded shadow">
       <h1 class="text-center"> Boarding Pass </h1>
       <div class="row g-2 mb-1">
         <div class="col-md">
@@ -52,7 +52,9 @@
           </div>
           <%= image_tag "PDF417.png",  height: "150" %>
         </div>
+          
       </div>
+      <p><%= link_to "Add Review", new_booking_review_aircraft_path(@booking), class: "btn btn-light mt-5" %></p>
     </div>
   <% end %>
 </div>
