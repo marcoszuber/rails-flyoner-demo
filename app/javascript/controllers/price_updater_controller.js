@@ -18,6 +18,7 @@ export default class extends Controller {
     let days = Math.abs(endTime - startTime) / (1000 * 60 * 60 * 24)
     let price = this.priceTarget.dataset.price
     let total = price * days
-    this.outputTarget.innerText = total
+    let formattedNumber = total.toLocaleString('de-DE')
+    this.outputTarget.innerText = formattedNumber
   }
 }
