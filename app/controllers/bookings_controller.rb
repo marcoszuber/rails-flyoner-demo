@@ -26,6 +26,9 @@ class BookingsController < ApplicationController
     #@booking.user_id = 1
 
     if @booking.save
+      #Envia Notificacion de email
+      @user = current_user
+      UserNotifierMailer.send_booking_email(@user).deliver
       redirect_to bookings_path
     else
       flash[:alert] = @booking.errors.full_messages[0]

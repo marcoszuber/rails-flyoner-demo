@@ -16,7 +16,7 @@
             <%= f.date_field(:finish_time, class: "form-control") %>
           </div>
           <div class="mt-2">
-            <%= f.submit "Guardar", class: "btn btn-dark" %>
+            <%= f.submit "Guardar", class: "btn btn-dark", html: { "data-turbo": "false"} %>
           </div>
       <% end %>
     </div>

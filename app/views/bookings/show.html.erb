@@ -41,6 +41,18 @@
           </div>
         </div>
       </div>
+
+      <div class="row g-2 mb-1">
+        <div class="row g-2 mb-1">
+          <div class="col-md">
+            <div class="form-floating mb-1">
+              <p class="form-control"><%= (@booking.finish_time.try(:to_date) - @booking.start_time.try(:to_date)).to_i * @booking.aircraft.price %></p>
+              <%= form.label :Price, "Price USD" %>
+            </div>
+          </div>
+          <%= image_tag "PDF417.png",  height: "150" %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
