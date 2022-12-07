@@ -1,4 +1,4 @@
-<header class="d-flex align-items-center justify-content-between px-4 px-md-5 bg-white overflow-auto";>
+<nav class="d-flex align-items-center justify-content-between px-4 px-md-5 bg-white overflow-auto">
 
   <%= link_to root_path do %>
     <%= image_tag "logo.png", class: "logo"%>
@@ -27,7 +27,7 @@
             <% end %>
           <% else %>
             <%= link_to edit_user_registration_path do %>
-              <%= image_tag "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=", class: "rounded-circle", style: "width: 50px; height: 50px;" %>
+              <%= image_tag 'default-avatar.jpeg', class: "rounded-circle", style: "width: 50px; height: 50px;" %>
             <% end %>
           <% end %>
         </div>
@@ -40,4 +40,5 @@
       <% end %>
       </div>
   </div>
-</header>
+
+</nav>

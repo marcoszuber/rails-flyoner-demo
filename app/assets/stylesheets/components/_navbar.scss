@@ -42,3 +42,21 @@
 #links-nav-mm:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+    nav {
+        /* Change the navbar's layout and styling for small screens */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    #links-nav-mm {
+        /* Change the styling of the navbar links for small screens */
+        display: block;
+        margin: 10px 0;
+        font-size: 16px;
+    }
+}
