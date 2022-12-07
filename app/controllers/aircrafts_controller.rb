@@ -10,11 +10,12 @@ class AircraftsController < ApplicationController
 
 
   def index
-    if params[:finish_time].present?
+    if params[:finish_time].present? or params[:start_time].present? or params[:seats].present?
       start_date = params[:start_time].try(:to_date) || DateTime.now
       end_date = params[:finish_time].try(:to_date) || DateTime.now + 30.days
+      seats = params[:seats].to_i || 1
       bookings = Booking.where(start_time: start_date..end_date).or(Booking.where(finish_time: start_date..end_date))
-      @aircrafts = Aircraft.where.not(id: bookings.map(&:aircraft_id)).where(status: true)
+      @aircrafts = Aircraft.where.not(id: bookings.map(&:aircraft_id)).where(status: true).and(Aircraft.where.not(seats: 1..seats)) 
     else
       @aircrafts = Aircraft.where(status: true)
     end
@@ -27,6 +28,7 @@ class AircraftsController < ApplicationController
   def show
     @booking = Booking.new
     @review_aircraft = ReviewAircraft.where(aircraft_id: @aircraft.id)
+    @airports = Airport.all
   end
 
   def new
