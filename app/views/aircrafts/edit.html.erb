@@ -8,7 +8,10 @@
       <%= f.input :seats %>
       <%= f.input :price %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.input :status, as: :boolean, label: "Available for rental" %>
       <%= f.submit "Edit", class: "btn btn-dark mt-3 p-2 boton-submit-jb" %>
+
+      <%= link_to "Back", aircrafts_path, class: "btn btn-dark mt-3 p-2 boton-submit-jb" %>
     <% end %>
   </div>
 </div>

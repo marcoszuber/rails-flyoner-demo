@@ -20,6 +20,10 @@ class AircraftsController < ApplicationController
     end
   end
 
+  def my_aircrafts
+    @aircrafts = Aircraft.where(user: current_user.id)
+  end
+
   def show
     @booking = Booking.new
   end
@@ -50,7 +54,7 @@ class AircraftsController < ApplicationController
   end
 
   def destroy
-    @aircraft.status = false
+    @aircraft.destroy
     redirect_to aircrafts_url, notice: "aircraft was successfully destroyed."
   end
 
