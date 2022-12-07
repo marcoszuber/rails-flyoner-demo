@@ -26,6 +26,7 @@ class AircraftsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @review_aircraft = ReviewAircraft.where(aircraft_id: @aircraft.id)
   end
 
   def new

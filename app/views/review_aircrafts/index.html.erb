@@ -1,0 +1,15 @@
+<div class="">
+  <div class="revs-container m-5 pb-5">
+    <h1 id="review-title"><strong><%= @aircraft.name.capitalize %> Reviews</strong></h1>
+  <% @review_aircrafts.each do |review| %>
+    <div class="review-card-jb mb-5 px-3 py-3">
+      <div>
+        <%= "#{review.stars} " %><i class="fa-solid fa-star"></i>
+      </div>
+      <div>
+        <%= review.description.capitalize %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>
