@@ -9,6 +9,7 @@
     <% if user_signed_in? %>
       <% if current_user.owner? %>
         <%= link_to 'Rent your aircraft', new_aircraft_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id: 'links-nav-mm' %>
+        <%= link_to 'My Aircrafts', my_aircrafts_path, class: 'h5 link-dark text-decoration-none py-5 ms-5 me-4 my-0 text-center', id: 'links-nav-mm' %>
       <% end %>
       <div class="d-flex ms-auto">
         <% if current_user.client? %>

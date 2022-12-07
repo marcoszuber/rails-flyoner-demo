@@ -1,5 +1,5 @@
 class AircraftsController < ApplicationController
-  before_action :set_aircraft, only: %i[show edit update destroy]
+  before_action :set_aircraft, only: %i[show edit update delete]
   skip_before_action :authenticate_user!, only: %i[index show]
 
   load_and_authorize_resource
@@ -18,6 +18,10 @@ class AircraftsController < ApplicationController
     else
       @aircrafts = Aircraft.where(status: true)
     end
+  end
+
+  def my_aircrafts
+    @aircrafts = Aircraft.where(user: current_user.id)
   end
 
   def show
@@ -49,8 +53,8 @@ class AircraftsController < ApplicationController
     end
   end
 
-  def destroy
-    @aircraft.status = false
+  def delete
+    @aircraft.destroy
     redirect_to aircrafts_url, notice: "aircraft was successfully destroyed."
   end
 

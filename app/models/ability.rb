@@ -8,7 +8,8 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user.owner?
-      can :update, Aircraft, user: user # Only owner can update his own aircraft
+      can :manage, User, id: user.id # Only owner can update his own profile
+      can :manage, Aircraft, user: user # Only owner can update his own aircraft
       can :create, Aircraft # Only owner can create new aircraft
       can :read, Aircraft
       can :read, Booking
@@ -20,6 +21,7 @@ class Ability
       can :create, Feedback
       can :destroy, Aircraft, user: user
     elsif user.client?
+      can :manage, User, id: user.id
       can [:read, :update], Booking, user: user
       can :create, Booking
       can :read, EmptyLeg
