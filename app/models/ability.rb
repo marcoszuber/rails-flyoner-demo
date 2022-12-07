@@ -15,6 +15,7 @@ class Ability
       can :read, Booking
       can :read, EmptyLeg
       can [:read, :update], Booking, aircraft: { user: user }
+      can :create, Booking
       can :update, EmptyLeg, aircraft: { user: user }
       can :create, EmptyLeg
       can :read, ReviewAircraft
