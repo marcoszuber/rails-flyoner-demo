@@ -7,36 +7,48 @@
 <div class="container">
 
   <div class="card p-3 rounded-4" style="margin-top: -30px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);">
-    <%= form_tag empty_legs_path, class: "d-flex nav-search justify-content-between", method: :get do %>
-      <div class="col-5 m-1">
+    <%= form_tag aircrafts_path, class: "d-flex nav-search justify-content-between", method: :get do %>
+      <div class="form-group col-5 m-1">
         <label for="start_time">Start time</label>
         <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time"%>
       </div>
-      <div class="col-5 m-1">
+      <div class="form-group col-5 m-1">
         <label for="finish_time">Finish time</label>
         <%= date_field_tag :finish_time, params[:finish_time], class: "form-control ", placeholder: "finish Time" %>
       </div>
-      <div class="col-1 m-1">
+      <div class="form-group col-1 m-1">
         <label for="finish_time">Seats</label>
         <%= number_field_tag :seats, params[:seats], class: "form-control", placeholder: "number" %>
       </div>
-      <div class="col-1 m-1 mt-4">
+      <div class="form-group col-1 m-1 mt-4">
         <%= button_tag "Submit", type: "submit", class: "btn btn-dark"  %>
       </div>
     <% end %>
   </div>
-  <div class="intro-products-jb my-5">
-
-
-    <h1>Available Empty Legs</h1>
-
-    <% @empty_legs.each do |empty_leg| %>
-      <p>From: <%= empty_leg.from %></p>
-      <p>To: <%= empty_leg.to %></p>
-      <p>Date: <%= empty_leg.date %></p>
-      <p>Seats Available: <%= empty_leg.seat_available %></p>
-      <hr>
-    <% end %>
-
+  <div class="intro-products-mm my-5">
+    <h3>Empty Legs</h3>
+    <p>Book one of our empty leg flights</p>
   </div>
+
+  <div class="card-product-mm">
+    <% @empty_legs.each do |empty_leg| %>
+      <div class="card-product-infos-mm my-5">
+        <div class="image-container" style="width: 300px; height: 300px; overflow: hidden;">
+          <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
+          <%= image_tag 'https://picsum.photos/seed/picsum/200/301', width: 300; %>
+        </div>
+            <h5>From: <%= empty_leg.from %></h5>
+              <h5>To: <%= empty_leg.to %></h5>
+          <p1><%= "Has #{empty_leg.seat_available} seats available" %></p1>
+        <div class="d-flex justify-content-end">
+          <div class="boton-avion-mm">
+            <%= form_tag empty_legs_path(empty_leg[:id]), method: :get do %>
+              <%= submit_tag "Book now", class: "btn btn-dark me-2" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 </div>

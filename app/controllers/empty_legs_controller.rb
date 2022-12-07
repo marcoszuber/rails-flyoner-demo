@@ -11,12 +11,16 @@ class EmptyLegsController < ApplicationController
 
 
   def index
+    @aicrafts = Aircraft.all
     if params[:finish_time].present?
       start_date = params[:start_time].try(:to_date) || DateTime.now
       end_date = params[:finish_time].try(:to_date) || DateTime.now + 30.days
       bookings = Booking.where(start_time: start_date..end_date).or(Booking.where(finish_time: start_date..end_date))
       @empty_legs = EmptyLeg.where.not(id: bookings.map(&:empty_leg_id))
+      @aircrafts = Aircraft.where.not(id: bookings.map(&:aircraft_id)).where(status: true)
+      @aircrafts = Aircraft.where(status: true)
     else
+      @aircrafts = Aircraft.where(status: true)
       @empty_legs = EmptyLeg.all
     end
   end
