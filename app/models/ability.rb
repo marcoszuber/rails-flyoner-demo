@@ -7,6 +7,7 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
+
     if user.owner? and user.client?
       can :manage, User, id: user.id # Only owner can update his own profile
       can :manage, Aircraft, user: user # Only owner can update his own aircraft

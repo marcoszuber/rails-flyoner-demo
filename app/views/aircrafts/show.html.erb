@@ -21,10 +21,16 @@
           <% end %>
           </div>
           <div class="row ps-3 pt-2">
-            <h4><%= @aircraft.name.capitalize %></h4>
+            <div class="d-flex">
+              <h4><%= @aircraft.name.capitalize %></h4>
+              <h4><%#= @review_aircraft %></h4>
+            </div>
             <p><em><%= @aircraft.description.capitalize %></em></p>
             <p><%= "Available Seats: #{@aircraft.seats}" %></p>
-            <p><%= "USD #{@aircraft.price}" %></p>
+            <div class="d-flex justify-content-between">
+              <p><%= "USD #{@aircraft.price}" %></p>
+              <p id="btn-see-all-revs"><%= link_to "See all reviews", aircraft_review_aircrafts_path(@aircraft), class: "btn btn-light" %></p>
+            </div>
           </div>
         </div>
         <div class="my-5">
