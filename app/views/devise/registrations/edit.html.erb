@@ -26,6 +26,10 @@
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :photo, as: :file %>
+    <%= f.label :owner, "Are you a aircraft owner?", class: "fw-bolder" %>
+    <%= f.input :owner, as: :boolean, label: "<-" %>
+    <%= f.label :owner, "Do you want to fly with us?", class: "fw-bolder" %>
+    <%= f.input :client, as: :boolean, label: "<-", class: "fw-bolder" %>   
   </div>
 
   <div class="form-actions">
