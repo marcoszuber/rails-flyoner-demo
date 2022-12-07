@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "my_aircrafts", to: "aircrafts#my_aircrafts"
+  resources :feedback, only: [:new, :create]
   resources :aircrafts do
     resources :bookings, only: [:new, :create]
   end
