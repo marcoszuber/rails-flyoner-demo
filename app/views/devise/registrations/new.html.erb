@@ -24,11 +24,15 @@
           <%= f.input :last_name, required: true %>
           <%= f.input :dni, required: true %>
           <%= f.input :photo, as: :file %>
+          <%= f.label :owner, "Are you a aircraft owner?", class: "fw-bolder",  style: "font-size: 1.2rem;" %>
+          <%= f.check_box :owner, as: :boolean %>
+          <%= f.label :client, "Do you want to fly with us?", class: "fw-bolder mt-2"  ,  style: "font-size: 1.2rem;" %>
+          <%= f.check_box :client, as: :boolean %>
         </div>
 
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up" , class: "btn btn-dark mb-3" %>
+          <%= f.button :submit, "Sign up" , class: "btn btn-dark my-4", style: "width: 100%" %>
         </div>
       <% end %>
 

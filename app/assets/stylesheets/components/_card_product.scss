@@ -104,3 +104,39 @@
   align-items: center;
   border-radius: 10px;
 }
+=======
+.review-card-jb {
+  overflow: hidden;
+  height: 120px;
+  width: 800px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 0 auto;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.rev-container-jb {
+  background: rgb(148, 146, 146);
+  margin: 0 auto;
+  align-items: center;
+}
+
+.revs-container {
+  background: rgb(194, 191, 191);
+  align-items: center;
+  border-radius: 10px;
+}
+
+#review-title {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  align-items: center;
+  width: 800px;
+}
+
+#btn-see-all-revs {
+  padding-right: 10px;
+}
+

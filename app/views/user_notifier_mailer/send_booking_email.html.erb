@@ -3,14 +3,23 @@
 <head>
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
-  <body>
-  <div>
-    <div>
-     <%= image_tag attachments['default.png'].url , style: 'height:20vw;width:20vw;' -%>
-    </div>
-    <h1 style="color:red">Thanks for signing up, <%= @user.first_name %>!</h1>
-    <p>Thanks for joining and have a great day! Now sign in and do
-      awesome things!</p>
+<body style="">
+<div style="text-align: center; border: 1px solid; border-radius: 10px; box-shadow: 2px 4px 10px grey; padding: 10px">
+  <div >
+    <%= image_tag attachments['logof.png'].url -%>
   </div>
-  </body>
+  <h1 style="">Thanks for signing up, <%= @user.first_name %>!</h1>
+  <p>Thanks for joining and have a great day! Now sign in and do
+    awesome things!</p>
+  <div style="">
+    <h2> Flight details </h2>
+    <p style="font-weight: bold">Flight Number: <%= @booking.id %></p>
+    <p style="font-weight: bold">Aircraft: </p>
+    <p style="font-weight: bold">Departure: <%= @booking.start_time.strftime("%d/%m/%Y") %> </p>
+    <p style="font-weight: bold">Arrival: <%= @booking.finish_time.strftime("%d/%m/%Y") %> </p>
+    <p style="font-weight: bold"> Cost:</p>
+  </div>
+
+</div>
+</body>
 </html>

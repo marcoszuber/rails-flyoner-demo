@@ -11,7 +11,8 @@ class ReviewAircraftsController < ApplicationController
     
   
     def index
-      @review_aircrafts = ReviewAircraft.all
+      @aircraft = Aircraft.find(params[:aircraft_id])
+      @review_aircrafts = ReviewAircraft.where(aircraft_id: @aircraft.id)
     end
   
     def show
