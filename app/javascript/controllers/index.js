@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import PriceUpdaterController from "./price_updater_controller"
 application.register("price-updater", PriceUpdaterController)
+
+import SlimController from "./slim_controller"
+application.register("slim", SlimController)

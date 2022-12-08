@@ -24,6 +24,12 @@ class BookingsController < ApplicationController
   end
 
   def create
+    start_time = params[:booking][:start_time]
+    if params[:booking][:finish_time].present? 
+      params[:booking][:finish_time] = params[:booking][:finish_time] 
+    else
+      params[:booking][:finish_time]  = start_time
+    end
     @aircraft = Aircraft.find(params[:aircraft_id])
     @booking = Booking.new(booking_params)
     @booking.aircraft = @aircraft
@@ -66,6 +72,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     #params.require(:booking).permit(:name, :seats, :price, :description)
-    params.require(:booking).permit(:start_time, :finish_time, :aircraft_id)
+    params.require(:booking).permit(:start_time, :finish_time, :aircraft_id, :from, :to)
   end
 end

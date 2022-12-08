@@ -7,7 +7,8 @@ class Booking < ApplicationRecord
   validates :start_time, presence: true
   validates :finish_time, presence: true
 
-  validates_comparison_of :finish_time, greater_than: :start_time, message: "Ups, some went wrong! check the form and if the airplane isn't booked"
+
+  validates_comparison_of :finish_time, greater_than_or_equal_to: :start_time, message: "Ups, some went wrong! check the form and if the airplane isn't booked"
   validate :validate_other_booking_overlap
 
   def period

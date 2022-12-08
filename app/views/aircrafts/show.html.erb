@@ -55,15 +55,15 @@
               <label for="finish_time">Finish time</label>
               <%= form.date_field :finish_time, data: { target: "price-updater.finishTime", action: "price-updater#changePrice" }, class: "form-control", placeholder: "Finish Time", value: params[:finish_time] %>
             </div>
-            <div class=" m-1">
-              <label for="finish_time" class="mt-5">Form:</label>
-              <%= form.select :start_location, options_for_select(@airports.map { |location| [location.name, location.code] }), class: "form-control select2", placeholder: "from"%>
+            <div class=" m-1" >
+              <label for="from" class="mt-5">Form:</label>
+              <%= form.select :from, Airport.pluck(:name, :code), {include_blank: true}, { class: "bg-light", data: { controller: "slim" } } %>
             </div>
             <div class=" m-1">
-              <label for="finish_time">to: </label>
-              <%= form.date_field :finish_time, data: { target: "price-updater.finishTime", action: "price-updater#changePrice" }, class: "form-control", placeholder: "Finish Time", value: params[:finish_time] %>
+              <label for="to">to: </label>
+              <%= form.select :to, Airport.pluck(:name, :code), {include_blank: true}, { class: "bg-light", data: { controller: "slim" } } %>
             </div>
-              <div class="d-flex justify-content-between align-items-end mt-5">
+              <div class="d-flex justify-content-between align-items-end mt-3">
                 <% if user_signed_in? %>
                   <% if current_user.client? %>
                     <div class="col-1 m-1 mt-4">
