@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_193604) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_144547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_193604) do
     t.bigint "empty_leg_id"
     t.bigint "review_aircraft_id"
     t.bigint "payment_id"
+    t.integer "total_price", default: 0
     t.index ["aircraft_id"], name: "index_bookings_on_aircraft_id"
     t.index ["empty_leg_id"], name: "index_bookings_on_empty_leg_id"
     t.index ["payment_id"], name: "index_bookings_on_payment_id"
