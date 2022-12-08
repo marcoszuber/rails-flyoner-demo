@@ -57,7 +57,7 @@
             </div>
             <div class=" m-1">
               <label for="finish_time" class="mt-5">Form:</label>
-              <%= form.select_tag :start_location, options_for_select(@airports.map { |location| [location.name, location.code] }), class: "form-control", placeholder: "from"%>
+              <%= form.select :start_location, options_for_select(@airports.map { |location| [location.name, location.code] }), class: "form-control select2", placeholder: "from"%>
             </div>
             <div class=" m-1">
               <label for="finish_time">to: </label>
