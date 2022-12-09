@@ -80,3 +80,5 @@ gem "devise"
 gem "faker"
 gem "cloudinary"
 gem 'cancancan'
+
+gem 'mercadopago-sdk', '~> 2.1'

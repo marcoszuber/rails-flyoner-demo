@@ -53,10 +53,11 @@ class Ability
     else # guest user (not logged in)
       can :read, Aircraft
       can :read, EmptyLeg
-      can :read, Booking
+      can :manage, Payment
       can :read, ReviewAircraft
-      can :read, Feedback
+
       can :create, Feedback
+
     end
   end
 end
