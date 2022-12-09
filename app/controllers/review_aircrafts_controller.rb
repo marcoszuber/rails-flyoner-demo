@@ -13,6 +13,7 @@ class ReviewAircraftsController < ApplicationController
     def index
       @aircraft = Aircraft.find(params[:aircraft_id])
       @review_aircrafts = ReviewAircraft.where(aircraft_id: @aircraft.id)
+      console
     end
   
     def show
