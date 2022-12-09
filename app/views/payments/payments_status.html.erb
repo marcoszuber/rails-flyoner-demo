@@ -1,0 +1,29 @@
+<div class="container">
+<div id="statusScreenBrick_container"></div>
+<script>
+    const mp = new MercadoPago('TEST-9d59bacb-fcfc-4040-95b3-5a5e6a2f5a70');
+    const bricksBuilder = mp.bricks();
+    const renderStatusScreenBrick = async (bricksBuilder) => {
+        const settings = {
+            initialization: {
+                paymentId: '1310727078', // valor del procesamiento a realizar
+            },
+            callbacks: {
+                onReady: () => {
+                    // callback llamado cuando Brick está listo
+                },
+                onError: (error) => {
+                    // callback llamado para todos los casos de error de Brick
+                },
+            },
+            customization: {
+                visual: {
+                    showExternalReference: true
+                }
+            }
+        };
+        window.statusScreenBrickController = await bricksBuilder.create('statusScreen', 'statusScreenBrick_container', settings);
+    };
+    renderStatusScreenBrick(bricksBuilder);
+</script>
+</div>

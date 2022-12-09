@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "my_aircrafts", to: "aircrafts#my_aircrafts"
+  post "process_payment", to: "payments#process_payment"
+  get "payments_status", to: "payments#payments_status"
   resources :feedback, only: [:new, :create]
   resources :aircrafts do
     resources :bookings, only: [:new, :create]
@@ -12,8 +14,10 @@ Rails.application.routes.draw do
 
   resources :bookings, except: [:new, :create] do
     resources :review_aircrafts, except: [:show, :destroy, :index]
-    resources :payments
+    resources :payments, only: [:new, :create]
     resources :empty_legs, only: [:new, :create]
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :payments, except: [:new, :create]
+
 end
