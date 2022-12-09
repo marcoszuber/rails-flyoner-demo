@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_08_144547) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_09_215431) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,6 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_144547) do
     t.string "processing_mode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mp_id"
   end
 
   create_table "review_aircrafts", force: :cascade do |t|
