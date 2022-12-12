@@ -25,8 +25,8 @@ class BookingsController < ApplicationController
 
   def create
     start_time = params[:booking][:start_time]
-    if params[:booking][:finish_time].present? 
-      params[:booking][:finish_time] = params[:booking][:finish_time] 
+    if params[:booking][:finish_time].present?
+      params[:booking][:finish_time] = params[:booking][:finish_time]
     else
       params[:booking][:finish_time]  = start_time
     end
@@ -36,8 +36,10 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.total_price = ((@booking.finish_time.try(:to_date) - @booking.start_time.try(:to_date)).to_i * @booking.aircraft.price)
 
+
     if @booking.save
       #Envia Notificacion de email
+      @booking.total_price = 1222
       @user = current_user
       UserNotifierMailer.send_booking_email(@user, @booking).deliver_later
       #redirect_to bookings_path
@@ -73,6 +75,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     #params.require(:booking).permit(:name, :seats, :price, :description)
-    params.require(:booking).permit(:start_time, :finish_time, :aircraft_id, :from, :to)
+    params.require(:booking).permit(:start_time, :finish_time, :aircraft_id, :from, :to, :total_price)
   end
 end
