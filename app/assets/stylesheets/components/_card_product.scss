@@ -1,6 +1,6 @@
 .card-product-infos-jb {
   overflow: hidden;
-  height: 130px;
+  height: 250px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -58,7 +58,7 @@
   padding-left: 0;
   margin-left: 0;
 }
-.card:hover {
+.cardshadow:hover {
   box-shadow: 0 0 15px rgba(0,0,0,1);
 }
 

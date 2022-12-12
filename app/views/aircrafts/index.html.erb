@@ -30,36 +30,39 @@
     <h3>Aeronaves Disponibles</h3>
     <p>Haz click para obtener mayor información sobre cada uno.</p>
   </div>
+<div class="row justify-content-between mt-5">
+  <% @aircrafts.each do |aircraft| %>
+    <div class="col-4 my-2">
+      <% if aircraft.photos.last %>
+        <% aircraft_photo = url_for(aircraft.photos.first) %>
+      <% else %>
+        <% aircraft_photo = asset_path("background-banner.jpg") %>
+      <% end %>
 
-  <div class="card-product-jb">
-          <% @aircrafts.each do |aircraft| %>
-            <div class="card-product-infos-jb my-5">
-            <% if aircraft.photos.last %>
-              <%= cl_image_tag(aircraft.photos.last.key, class: "img-fluid") %>
-            <% else %>
-              <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
-            <% end %>
+      <%= form_tag aircraft_path(aircraft), method: :get do %>
+        <%= hidden_field_tag :start_time, params[:start_time] %>
+        <%= hidden_field_tag :finish_time, params[:finish_time] %>
+        <%= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
 
-                <div class="descripcion-avion-jb text-start">
-                  <h4><%= aircraft.name.capitalize %></h4>
-                  <p><%= "Has #{aircraft.seats} seats" %></p>
-                </div>
-                <div class="d-flex justify-content-end">
-                  <% if Aircraft.find(aircraft.id).user == current_user %>
-                    <div class="boton-avion-jb">
-                      <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-warning me-2" %></p>
-                    </div>
-                  <% end %>
-                  <div class="boton-avion-jb">
-                      <%= form_tag aircraft_path(aircraft), method: :get do %>
-                        <%= hidden_field_tag :start_time, params[:start_time] %>
-                        <%= hidden_field_tag :finish_time, params[:finish_time] %>
-                        <%= submit_tag "Book now", class: "btn btn-dark me-2" %>
-                      <% end %>
-                    <%#= link_to "Book now", aircraft_path(aircraft), class: "btn btn-dark me-2" %>
-                  </div>
-                </div>
+          <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= aircraft_photo %>);" >
+            <div>
+              <h2><strong><%= aircraft.name %></strong></h2>
+              <p>has <%= aircraft.seats %> seats</p>
             </div>
-          <% end %>
-  </div>
+            <% if Aircraft.find(aircraft.id).user == current_user %>
+              <div class="boton-avion-jb">
+                <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-warning me-2 " %></p>
+              </div>
+            <% else %>
+              <div class="d-flex flex-row-reverse">
+                <p>Day price <strong>USD <%= aircraft.price %></strong></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 </div>

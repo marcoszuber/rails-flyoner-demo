@@ -1,30 +1,26 @@
-<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
+<% if @aircraft.photos.first.key.present? %>
+  <% photo = url_for(@aircraft.photos.first) %>
+<% else %>
+  <% photo = asset_path("background-banner.jpg") %>
+<% end %>
+<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= photo %>);">
   <div class="container-jb" id="container-banner-jb">
-    <h1><%= @aircraft.name.capitalize %></h1>
-
-
-    <div class="boton-avion-jb">
-      <p><%= link_to "Book now", new_aircraft_booking_path(@aircraft), class: "btn btn-light mt-5" %></p>
-    </div>
+    <h1 style="padding-bottom: 200px;"><%= @aircraft.name.capitalize %></h1>
   </div>
 </div>
+
 <div class="">
   <div class="d-flex justify-content-center">
     <div class="container row">
-
-
-      <div class="card-details-jb my-5 col-8 ">
-        <div class="card-product-details-jb d-flex py-0">
-          <div>
-          <% if @aircraft.photos.last != nil %>
-            <%= cl_image_tag(@aircraft.photos.last.key, :width=>300) %>
-          <% end %>
-          </div>
+      <div class="card my-5 col-8 rounded-4">
+        <div class="d-flex py-0">
           <div class="row ps-3 pt-2">
             <div class="d-flex align-items-center mb-2">
               <h4 class="rev-title pb-0 mb-0"><strong><%= @aircraft.name.capitalize %></strong></h4>
+
               
               <% if @average_stars != 0 %>
+
                 <h5 class="avg-stars-jb ps-3 pb-0 mb-0">
                   <%= @average_stars %>
                   <i class="fa-solid fa-star"></i>
@@ -46,16 +42,6 @@
             </div>
           </div>
         </div>
-        <div class="my-5">
-          <h2>More pictures about this Aircraft</h2>
-          <div class=" row my-5">
-            <% @aircraft.photos.each do |photo| %>
-              <div class="col-3">
-                <%= cl_image_tag(photo.key, :width=>300) %>
-              </div>
-            <% end %>
-          </div>
-        </div>
       </div>
       <div class="col-4">
         <div class="mt-5 card p-3 rounded-4">
@@ -69,7 +55,7 @@
               <%= form.date_field :finish_time, data: { target: "price-updater.finishTime", action: "price-updater#changePrice" }, class: "form-control", placeholder: "Finish Time", value: params[:finish_time] %>
             </div>
             <div class=" m-1" >
-              <label for="from" class="mt-5">Form:</label>
+              <label for="from" class="mt-5">From:</label>
               <%= form.select :from, Airport.pluck(:name, :code), {include_blank: true}, { class: "bg-light", data: { controller: "slim" } } %>
             </div>
             <div class=" m-1">
@@ -95,4 +81,13 @@
     </div>
   </div>
 </div>
-<%#= cl_image_tag(@aircraft.photos.first.key, height: 300, width: 300) %>
+
+<div style="text-align:center; font-style:italic;" class="mt-4">Scroll to left for more picture</div>
+<div class="scroll-container container">
+  <div class="gridscroll">
+    <!-- PLACE YOUR IMG URL HERE -->
+    <% @aircraft.photos.each do |photo| %>
+      <img src="<%=url_for(photo)%>"  alt="">
+    <% end %>
+  </div>
+</div>
