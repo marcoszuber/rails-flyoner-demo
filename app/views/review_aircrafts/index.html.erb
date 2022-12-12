@@ -1,5 +1,5 @@
-<div class="">
-  <div class="revs-container m-5 pb-5">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
+  <div class="pb-5">
     <h1 id="review-title"><strong><%= @aircraft.name.capitalize %> Reviews</strong></h1>
   <% @review_aircrafts.each do |review| %>
     <div class="review-card-jb mb-5 px-3 py-3">
@@ -9,7 +9,11 @@
       <div>
         <%= review.description.capitalize %>
       </div>
-        <p id="btn-edit-rvs"><%= link_to "Edit", aircraft_review_aircrafts_path(@aircraft), class: "btn btn-light" %></p>
+        <% if ReviewAircraft.find(review.id).user == current_user %>
+          <div class="btn-edit-rvs">
+            <p ><%= link_to "Edit", edit_review_aircraft_path(review), class: "btn btn-light mt-2" %></p>
+          </div>
+        <% end %>
     </div>
   <% end %>
   </div>

@@ -1,7 +1,6 @@
 class ReviewAircraftsController < ApplicationController
 
   load_and_authorize_resource
-
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, alert: exception.message
   end
@@ -13,12 +12,10 @@ class ReviewAircraftsController < ApplicationController
     def index
       @aircraft = Aircraft.find(params[:aircraft_id])
       @review_aircrafts = ReviewAircraft.where(aircraft_id: @aircraft.id)
-      #console
     end
 
-    def show
-
-    end
+    #def show
+    #end
 
     def new
       @booking = Booking.find(params[:booking_id])
@@ -43,7 +40,7 @@ class ReviewAircraftsController < ApplicationController
 
     def update
       if @review_aircraft.update(review_aircraft_params)
-        redirect_to @review_aircraft, notice: "review successfully updated."
+        redirect_to root_path, notice: "review successfully updated."
       else
         render :edit, status: :unprocessable_entity
       end
@@ -65,12 +62,3 @@ class ReviewAircraftsController < ApplicationController
     end
 
 end
-
-#t.float "stars"
-#t.text "description"
-#t.bigint "aircraft_id", null: false
-#t.datetime "created_at", null: false
-#t.datetime "updated_at", null: false
-#t.bigint "user_id"
-#t.index ["aircraft_id"], name: "index_review_aircrafts_on_aircraft_id"
-#t.index ["user_id"], name: "index_review_aircrafts_on_user_id"

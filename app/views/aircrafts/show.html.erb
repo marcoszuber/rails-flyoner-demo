@@ -24,23 +24,24 @@
             <div class="d-flex align-items-center mb-2">
               <h4 class="rev-title pb-0 mb-0"><strong><%= @aircraft.name.capitalize %></strong></h4>
               
-              <% if @average_stars != [] %>
+              <% if @average_stars != 0 %>
                 <h5 class="avg-stars-jb ps-3 pb-0 mb-0">
-                  <%#= @average_stars.average(:stars).round(1) %>
+                  <%= @average_stars %>
                   <i class="fa-solid fa-star"></i>
-                  <% else %>
-                    <%= "" %>
-                  <% end %>
                 </h5>
+                  <% else %>
+                    <p></p>
+              <% end %>
+                
             </div>
             <p><em><%= @aircraft.description.capitalize %></em></p>
             <p><%= "Available Seats: #{@aircraft.seats}" %></p>
             <div class="d-flex justify-content-between">
               <p><%= "USD #{@aircraft.price}" %></p>
-                <% if @average_stars != [] %>
+                <% if @average_stars != 0 %>
                   <p id="btn-see-all-revs"><%= link_to "See all reviews", aircraft_review_aircrafts_path(@aircraft), class: "btn btn-light" %></p>
                 <% else %>
-                  <%= "" %>
+                  <p></p>
                 <% end %>
             </div>
           </div>
