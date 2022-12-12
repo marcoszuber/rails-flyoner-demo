@@ -45,6 +45,7 @@ class BookingsController < ApplicationController
       #redirect_to bookings_path
       if params[:from].present?
       @booking.add_empty_leg
+      end
       redirect_to new_booking_payment_path(@booking)
     else
       flash[:alert] = @booking.errors.full_messages[0]
@@ -53,7 +54,7 @@ class BookingsController < ApplicationController
       # flash[:alert] = @alert
       render "aircrafts/show", status: :unprocessable_entity
     end
-  end
+    end
 
   def update
     if @booking.update(booking_params)
