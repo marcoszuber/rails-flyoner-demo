@@ -13,11 +13,12 @@ Rails.application.routes.draw do
   resources :empty_legs, only: [:index, :show, :edit, :update, :destroy]
 
   resources :bookings, except: [:new, :create] do
-    resources :review_aircrafts, except: [:show, :destroy, :index]
+    resources :review_aircrafts, except: [:show, :destroy, :index, :edit, :update]
     resources :payments, only: [:new, :create]
     resources :empty_legs, only: [:new, :create]
   end
 
   resources :payments, except: [:new, :create]
+  resources :review_aircrafts, only: [:edit, :update]
 
 end

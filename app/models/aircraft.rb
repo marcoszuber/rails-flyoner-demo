@@ -5,6 +5,11 @@ class Aircraft < ApplicationRecord
   has_many_attached :photos
   after_create :update_status
 
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :seats, presence: true
+  validates :price, presence: true
+
   private
 
   def update_status

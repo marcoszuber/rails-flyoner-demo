@@ -29,9 +29,14 @@ class AircraftsController < ApplicationController
     @booking = Booking.new
     @review_aircraft = ReviewAircraft.where(aircraft_id: @aircraft.id)
     @airports = Airport.all
-    @average_stars = ReviewAircraft.where(aircraft_id: @aircraft.id)#.average(:stars).round(1)
 
-    #console
+    
+    if @review_aircraft.size > 0
+      @average_stars = ReviewAircraft.where(aircraft_id: @aircraft.id).average(:stars).round(1)
+    else
+      @average_stars = 0
+    end
+
   end
 
   def new
