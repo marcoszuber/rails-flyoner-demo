@@ -48,6 +48,7 @@
             <div class="form-floating mb-1">
 
               <p class="form-control"><%#= (@booking.finish_time.try(:to_date) - @booking.start_time.try(:to_date)+1).to_i * @booking.aircraft.price %></p>
+
               <p class="form-control"> <%=@booking.total_price %> </p>
 
               <%= form.label :Price, "Price USD" %>
