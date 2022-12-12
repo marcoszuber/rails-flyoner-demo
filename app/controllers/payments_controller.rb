@@ -93,26 +93,40 @@ class PaymentsController < ApplicationController
 
     payment_response = sdk.payment.create(payment_data)
     payment = payment_response[:response]
+    resultado = JSON.parse(payment.to_json)
 
-    result = JSON.parse(request.raw_post)
+
+
+    #result = JSON.parse(request.raw_post)
     #result = JSON.parse(request.body.string)
-    pp "#############################################"
-    pp result
-    pp "#############################################"
+    #pp "#############################################"
+    #pp result
+    #pp "#############################################"
 
     pp "*********************************************"
-    pp payment
+    #pp payment
     pp "*********************************************"
-    pp "-----------------"
-    pp payment_response
-    pp "-----------------"
 
-    pp "............................................."
-    pp payment_data
-    pp "............................................."
+    pp "+++++++++++++++++++++++++++++++++++++++++++++"
+    pp resultado
+    pp "+++++++++++++++++++++++++++++++++++++++++++++"
+    pp id
+    #pp "-----------------"
+    #pp payment_response
+    #pp "-----------------"
 
-    pp params
-    redirect_to payments_status_path
+    #pp "............................................."
+    #pp payment_data
+    #pp "............................................."
+
+    #pp params
+
+    @payment = Payment.new
+    @payment.mp_id = resultado["id"].to_i
+    @payment.status = resultado["status"]
+    @payment.status_detail = resultado["status_detail"]
+    @payment.save
+
   end
 
 end

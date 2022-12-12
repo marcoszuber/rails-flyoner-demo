@@ -34,13 +34,16 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.aircraft = @aircraft
     @booking.user = current_user
-    #@booking.user_id = 1
+    @booking.total_price = ((@booking.finish_time.try(:to_date) - @booking.start_time.try(:to_date)).to_i * @booking.aircraft.price)
+
+
     if @booking.save
       #Envia Notificacion de email
       @booking.total_price = 1222
       @user = current_user
       UserNotifierMailer.send_booking_email(@user, @booking).deliver_later
-      redirect_to bookings_path
+      #redirect_to bookings_path
+      redirect_to new_booking_payment_path(@booking)
     else
       flash[:alert] = @booking.errors.full_messages[0]
 
