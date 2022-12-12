@@ -29,7 +29,8 @@ class AircraftsController < ApplicationController
     @booking = Booking.new
     @review_aircraft = ReviewAircraft.where(aircraft_id: @aircraft.id)
     @airports = Airport.all
-    @average_stars = ReviewAircraft.where(aircraft_id: @aircraft.id)#.average(:stars)#.round(1)
+    @average_stars = ReviewAircraft.where(aircraft_id: @aircraft.id)#.average(:stars).round(1)
+
     #console
   end
 
