@@ -1,27 +1,5 @@
 <div class="container">
   <%=@booking.total_price %>
-
-
-
-<!--
-<div class="cho-container"></div>
-<script>
-    const mp = new MercadoPago('TEST-9d59bacb-fcfc-4040-95b3-5a5e6a2f5a70', {
-        locale: 'es-AR'
-    });
-
-    mp.checkout({
-        preference: {
-            id: "<%#= @preference_id %>"
-        },
-        render: {
-            container: '.cho-container',
-            label: 'Pagar',
-        }
-    });
-</script>
--->
-
 <div id="cardPaymentBrick_container">
 </div>
 <script>
@@ -63,6 +41,8 @@
                         })
                           .then((response) => {
                               // recibir el resultado del pago
+                              //console.log(response);
+                              window.location.href = response.url;
                               resolve();
                           })
                           .catch((error) => {

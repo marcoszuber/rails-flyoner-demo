@@ -20,60 +20,11 @@ class PaymentsController < ApplicationController
   def new
     @booking = Booking.find(params[:booking_id])
     @payment = Payment.new
-=begin
-    #########################################
-    # Inicia MercadoPago
-    # #######################################
-    @mp = Mercadopago::SDK.new(ENV['MP_TOKEN'])
-    preference_data = {
-      items: [
-        {
-          title: "Reserva de Vuelo",
-          quantity: 1,
-          unit_price: @booking.total_price
-        }
-      ]
-    }
-
-    preference_response = @mp.preference.create(preference_data)
-    preference = preference_response[:response]
-
-    # Este valor reemplazará el string "<%= @preference_id %>" en tu HTML
-    @preference_id = preference['id']
-
-    #########################################
-    # Fin MercadoPago
-    # #######################################
-
-
-    sdk = Mercadopago::SDK.new(ENV['MP_TOKEN'])
-
-    payment_data = {
-      transaction_amount: params[:transactionAmount].to_f,
-      token: params[:token],
-      description: params[:description],
-      installments: params[:installments].to_i,
-      payment_method_id: params[:paymentMethodId],
-      payer: {
-        email: params[:cardholderEmail],
-        identification: {
-          type: params[:identificationType],
-          number: params[:identificationNumber]
-        },
-        first_name: params[:cardholderName]
-      }
-    }
-
-    payment_response = sdk.payment.create(payment_data)
-    payment = payment_response[:response]
-
-    pp payment
-=end
-
   end
   def process_payment
     require 'mercadopago'
     sdk = Mercadopago::SDK.new(ENV['MP_TOKEN'])
+
 
     payment_data = {
       transaction_amount: params[:transaction_amount].to_f,
@@ -103,30 +54,38 @@ class PaymentsController < ApplicationController
     #pp result
     #pp "#############################################"
 
-    pp "*********************************************"
+    #pp "*********************************************"
     #pp payment
-    pp "*********************************************"
+    #pp "*********************************************"
 
     pp "+++++++++++++++++++++++++++++++++++++++++++++"
     pp resultado
     pp "+++++++++++++++++++++++++++++++++++++++++++++"
-    pp id
     #pp "-----------------"
     #pp payment_response
     #pp "-----------------"
 
     #pp "............................................."
     #pp payment_data
-    #pp "............................................."
+    # pp "............................................."
 
-    #pp params
+    pp params
+
 
     @payment = Payment.new
     @payment.mp_id = resultado["id"].to_i
     @payment.status = resultado["status"]
     @payment.status_detail = resultado["status_detail"]
-    @payment.save
+    if @payment.save
+      redirect_to payment_path(@payment)
+    else
+      redirect_to root_path, alert: "Algo salio mal"
+    end
 
+  end
+
+  def show
+    @payment = Payment.find(params[:id])
   end
 
 end
