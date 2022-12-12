@@ -12,10 +12,16 @@
 
 .card-intro-mrz1{
   height: 250px;
+  transition: transform 0.5s ease;
+}
+
+.card-intro-mrz1:hover {
+  transform: scale(1.05);
 }
 
 .card-intro-mrz2 {
   height: 400px;
+  transition: transform 0.5s ease;
   h2{
     font-size: 1.75rem;
     font-weight: 600;
@@ -23,3 +29,49 @@
   }
 }
 
+.card-intro-mrz2:hover {
+  transform: scale(1.05);
+}
+
+.card-intro-mrz3{
+  height: 250px;
+  transition: transform 0.5s ease;
+  h2, p{
+    opacity: 0.7;
+  }
+
+}
+
+.card-intro-mrz3:hover {
+  transform: scale(1.05);
+  h2, p{
+    opacity: 1;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  }
+}
+
+.scroll-container{
+  overflow: auto;
+  white-space: nowrap;
+  padding: 5px 70px 5px 20px;
+  background: transparent;
+  height: 300px;
+  border-radius:15px;
+  img{
+    height: 300px;
+    margin: 0%;
+    filter: grayscale(75%);
+    transition: filter 0.5s ease;
+  }
+  img:hover{
+    filter: grayscale(0%)
+  }
+}
+
+.gridscroll{
+  display:inline-block;
+}
+
+.gridscroll img {
+  margin-right:22px;
+}
