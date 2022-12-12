@@ -15,6 +15,17 @@ class Booking < ApplicationRecord
     start_time..finish_time
   end
 
+  def add_empty_leg
+    empty_leg = EmptyLeg.new
+    empty_leg.from = self.to
+    empty_leg.to = self.from
+    empty_leg.date = self.finish_time
+    empty_leg.seat_available = self.aircraft.seats
+    empty_leg.save
+    self.empty_leg_id = empty_leg.id
+    self.save
+  end
+
   private
 
   def validate_other_booking_overlap
