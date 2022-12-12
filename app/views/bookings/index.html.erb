@@ -19,7 +19,7 @@
           <td><%= b.finish_time.strftime("%d/%m/%Y")%></td>
           <td><%= b.user.first_name %></td>
           <td><%= b.aircraft.name%></td>
-          <td>USD <%= (b.finish_time.try(:to_date) - b.start_time.try(:to_date)).to_i * b.aircraft.price%></td>
+          <td>USD <%= (b.finish_time.try(:to_date) - b.start_time.try(:to_date)+1).to_i * b.aircraft.price%></td>
           <td><%= link_to 'Boarding', booking_path(b) %></td>
           <td><%= link_to 'Edit', edit_booking_path(b) %></td>
         </tr>
