@@ -43,6 +43,7 @@ class BookingsController < ApplicationController
       @user = current_user
       UserNotifierMailer.send_booking_email(@user, @booking).deliver_later
       #redirect_to bookings_path
+      if params[:from].present?
       @booking.add_empty_leg
       redirect_to new_booking_payment_path(@booking)
     else
