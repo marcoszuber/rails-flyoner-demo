@@ -45,7 +45,7 @@
                   <p><%= "Has #{aircraft.seats} seats" %></p>
                 </div>
                 <div class="d-flex justify-content-end">
-                  <% if Aircraft.find(aircraft.id).user == current_user && aircraft.bookings.empty? %>
+                  <% if Aircraft.find(aircraft.id).user == current_user %>
                     <div class="boton-avion-jb">
                       <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-warning me-2" %></p>
                     </div>
