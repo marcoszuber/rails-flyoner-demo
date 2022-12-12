@@ -1,7 +1,7 @@
-<% if @aircraft.photos.first.key.present? %>
-  <% photo = url_for(@aircraft.photos.first) %>
+<% if @aircraft.photos.first.nil? %>
+    <% photo = asset_path("background-banner.jpg") %>
 <% else %>
-  <% photo = asset_path("background-banner.jpg") %>
+  <% photo = url_for(@aircraft.photos.first) %>
 <% end %>
 <div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= photo %>);">
   <div class="container-jb" id="container-banner-jb">
@@ -18,7 +18,7 @@
             <div class="d-flex align-items-center mb-2">
               <h4 class="rev-title pb-0 mb-0"><strong><%= @aircraft.name.capitalize %></strong></h4>
 
-              
+
               <% if @average_stars != 0 %>
 
                 <h5 class="avg-stars-jb ps-3 pb-0 mb-0">
@@ -28,7 +28,7 @@
                   <% else %>
                     <p></p>
               <% end %>
-                
+
             </div>
             <p><em><%= @aircraft.description.capitalize %></em></p>
             <p><%= "Available Seats: #{@aircraft.seats}" %></p>
