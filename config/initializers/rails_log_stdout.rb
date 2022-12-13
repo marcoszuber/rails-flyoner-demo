@@ -8,6 +8,7 @@ begin
     logger
   end
 
+
   case Rails::VERSION::MAJOR
     when 3 then Rails.logger = Rails.application.config.logger = Rails.heroku_stdout_logger
     when 2 then
