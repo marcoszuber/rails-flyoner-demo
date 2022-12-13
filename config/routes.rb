@@ -21,5 +21,5 @@ Rails.application.routes.draw do
 
   resources :payments, except: [:new, :create]
   resources :review_aircrafts, only: [:edit, :update]
-
+  post "airports/price", to: "airports#price"
 end

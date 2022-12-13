@@ -36,7 +36,7 @@ class Ability
       can :read, Aircraft
       can :read, EmptyLeg
       can [:read, :update], Booking, aircraft: { user: user }
-      can :read, Booking 
+      can :read, Booking
       can :update, EmptyLeg, aircraft: { user: user }
       can :create, EmptyLeg
       can :read, ReviewAircraft
@@ -55,9 +55,7 @@ class Ability
       can :read, EmptyLeg
       can :manage, Payment
       can :read, ReviewAircraft
-
       can :create, Feedback
-
     end
   end
 end
