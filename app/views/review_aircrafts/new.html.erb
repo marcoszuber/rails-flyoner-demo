@@ -3,7 +3,7 @@
   <h1><%= sanitize("<strong>Create</strong> Review") %></h1>
   <div class="card p-5 radius-10">
     <%= simple_form_for [@booking, @review_aircraft] do |f| %>
-      <%= f.input :stars, label: false %>
+      <%= f.input :stars, collection: (1..5).to_a, label: false, input_html: {data: {controller: "star-rating"}} %>
       <%= f.input :description %>
       <%= f.submit "Submit", class: "btn btn-dark mt-3 p-2 boton-submit-jb" %>
     <% end %>
