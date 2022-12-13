@@ -30,39 +30,39 @@
     <h3>Aeronaves Disponibles</h3>
     <p>Haz click para obtener mayor información sobre cada uno.</p>
   </div>
-<div class="row justify-content-between mt-5">
-  <% @aircrafts.each do |aircraft| %>
-    <div class="col-4 my-2">
-      <% if aircraft.photos.last %>
-        <% aircraft_photo = url_for(aircraft.photos.first) %>
-      <% else %>
-        <% aircraft_photo = asset_path("background-banner.jpg") %>
-      <% end %>
-
-      <%= form_tag aircraft_path(aircraft), method: :get do %>
-        <%= hidden_field_tag :start_time, params[:start_time] %>
-        <%= hidden_field_tag :finish_time, params[:finish_time] %>
-        <%= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
-
-          <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= aircraft_photo %>);" >
-            <div>
-              <h2><strong><%= aircraft.name %></strong></h2>
-              <p>has <%= aircraft.seats %> seats</p>
-            </div>
-            <% if Aircraft.find(aircraft.id).user == current_user %>
-              <div class="boton-avion-jb">
-                <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-warning me-2 " %></p>
-              </div>
-            <% else %>
-              <div class="d-flex flex-row-reverse">
-                <p>Day price <strong>USD <%= aircraft.price %></strong></p>
-              </div>
-            <% end %>
-          </div>
+  <div class="row justify-content-between mt-5">
+    <% @aircrafts.each do |aircraft| %>
+      <div class="col-4 my-2">
+        <% if aircraft.photos.last %>
+          <% aircraft_photo = url_for(aircraft.photos.first) %>
+        <% else %>
+          <% aircraft_photo = asset_path("background-banner.jpg") %>
         <% end %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+
+        <%= form_tag aircraft_path(aircraft), method: :get do %>
+          <%= hidden_field_tag :start_time, params[:start_time] %>
+          <%= hidden_field_tag :finish_time, params[:finish_time] %>
+          <%= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
+
+            <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= aircraft_photo %>);" >
+              <div>
+                <h2><strong><%= aircraft.name %></strong></h2>
+                <p>has <%= aircraft.seats %> seats</p>
+              </div>
+              <% if Aircraft.find(aircraft.id).user == current_user %>
+                <div class="boton-avion-jb">
+                  <p><%= link_to "Edit", edit_aircraft_path(aircraft), class: "btn btn-warning me-2 " %></p>
+                </div>
+              <% else %>
+                <div class="d-flex flex-row-reverse">
+                  <p>Day price <strong><%= number_to_currency(aircraft.price, unit: 'USD ', precision: 0, delimiter: ".") %></strong></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
 </div>

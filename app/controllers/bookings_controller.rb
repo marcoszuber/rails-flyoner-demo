@@ -39,11 +39,11 @@ class BookingsController < ApplicationController
 
     if @booking.save
       #Envia Notificacion de email
-
-      redirect_to new_booking_payment_path(@booking)
-
       @user = current_user
       UserNotifierMailer.send_booking_email(@user, @booking).deliver_later
+      redirect_to new_booking_payment_path(@booking)
+
+
       #redirect_to bookings_path
 
       if params[:from].present?
