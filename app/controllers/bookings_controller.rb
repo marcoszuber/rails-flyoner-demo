@@ -39,18 +39,12 @@ class BookingsController < ApplicationController
 
     if @booking.save
       #Envia Notificacion de email
-      #@user = current_user
-      #UserNotifierMailer.send_booking_email(@user, @booking).deliver_later
-      redirect_to new_booking_payment_path(@booking)
-
-
-
-
       if params[:from].present?
         @booking.add_empty_leg
       end
+      @user = current_user
+      UserNotifierMailer.send_booking_email(@user, @booking).deliver_later
       redirect_to new_booking_payment_path(@booking)
-
     else
       flash[:alert] = @booking.errors.full_messages[0]
 
