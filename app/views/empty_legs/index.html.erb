@@ -25,30 +25,40 @@
       </div>
     <% end %>
   </div>
-  <div class="intro-products-mm my-5">
+
+
+  <div class="intro-products-jb my-5">
     <h3>Empty Legs</h3>
     <p>Book one of our empty leg flights</p>
   </div>
 
-  <div class="card-product-mm">
-    <% @empty_legs.each do |empty_leg| %>
-      <div class="card-product-infos-mm my-5">
-        <div class="image-container" style="width: 300px; height: 300px; overflow: hidden;">
-          <%= image_tag asset_path("background-banner.jpg"), class: "img-fluid" %>
-          <%= image_tag 'https://picsum.photos/seed/picsum/200/301', width: 300; %>
-        </div>
-            <h5>From: <%= empty_leg.from %></h5>
-              <h5>To: <%= empty_leg.to %></h5>
-          <p1><%= "Has #{empty_leg.seat_available} seats available" %></p1>
-        <div class="d-flex justify-content-end">
-          <div class="boton-avion-mm">
-            <%= form_tag empty_legs_path(empty_leg[:id]), method: :get do %>
-              <%= submit_tag "Book now", class: "btn btn-dark me-2" %>
-            <% end %>
+<div class="row justify-content-between mt-5">
+  <% @empty_legs.each do |empty_leg| %>
+
+    <%#= form_tag root_path(empty_leg), method: :get do %>
+      <%#= hidden_field_tag :start_time, params[:start_time] %>
+      <%#= hidden_field_tag :finish_time, params[:finish_time] %>
+      <%#= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
+
+    <div class="col-4 my-2">
+          <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= 'https://picsum.photos/seed/picsum/200/301' %>);" >
+            <%= link_to '', new_booking_payment_path(empty_leg.booking), class:"stretched-link" %>
+            <div>
+              <h2><strong><%= empty_leg.to %></strong></h2>
+              <p>From <%= empty_leg.from %></p>
+            </div>
+              <div class="boton-avion-jb">
+              </div>
+                <p>Seats Available <strong><%= empty_leg.seat_available %></strong></p>
+            <div class="d-flex flex-row-reverse">
+              <p>Price <strong>USD <%= @aircrafts.last.price %></strong></p>
+            </div>
+              </div>
           </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%# end %>
+  <%# end %>
+  <% end %>
+    </div>
+
 </div>
 </div>
