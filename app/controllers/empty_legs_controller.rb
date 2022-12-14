@@ -11,7 +11,7 @@ class EmptyLegsController < ApplicationController
 
 
   def index
-    @aicrafts = Aircraft.all
+    @aicraft = Aircraft.all
     if params[:finish_time].present?
       start_date = params[:start_time].try(:to_date) || DateTime.now
       end_date = params[:finish_time].try(:to_date) || DateTime.now + 30.days

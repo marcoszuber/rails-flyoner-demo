@@ -41,7 +41,7 @@
       <%#= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
 
       <div class="col-4 my-2">
-        <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path(empty_leg.to) %>); background-size: cover">
+        <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path(empty_leg.to) %>);" >
           <%= link_to '', new_booking_payment_path(empty_leg.booking), class: "stretched-link" %>
           <div>
             <h2><strong><%= empty_leg.to %></strong></h2>
@@ -52,7 +52,7 @@
           <p>Seats Available <strong><%= empty_leg.seat_available %></strong></p>
           <p>Date: <strong><%= empty_leg.date %></strong></p>
           <div class="d-flex flex-row-reverse">
-            <p>Price <strong>USD <%= empty_leg.price %></strong></p>
+            <p>Price <strong>USD <%= empty_leg.price / 2 %></strong></p>
           </div>
         </div>
       </div>
