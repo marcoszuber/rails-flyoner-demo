@@ -8,24 +8,43 @@
         <div class="col-md">
           <div class="form-floating mb-1">
             <%= form.date_field :start_time, class: "form-control", disabled: true%>
-            <%= form.label :Fecha_Salida %>
+            <%= form.label :Departure_Date %>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating mb-1">
             <%= form.date_field :finish_time, class: "form-control", disabled: true%>
-            <%= form.label :Fecha_Llegada %>
+            <%= form.label :Arrival_Date %>
           </div>
         </div>
       </div>
 
       <div class="row g-2 mb-1">
-        <div class="row g-2 mb-1">
-          <div class="col-md">
-            <div class="form-floating mb-1">
-              <%= form.collection_select(:aircraft_id, Aircraft.all, :id, :name, {:prompt => 'Seleccione'}, class: "form-select", id: "Seleccione" , disabled: true) %>
-              <%= form.label :Aircraft %>
-            </div>
+        <div class="col-md">
+          <div class="form-floating mb-1">
+            <%= form.collection_select(:from, Airport.all, :id, :name, {:prompt => 'Seleccione'}, class: "form-select", id: "airport", disabled: true ) %>
+            <%= form.label :Departure %>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating mb-1">
+            <%= form.collection_select(:to, Airport.all, :id, :name, {:prompt => 'Seleccione'}, class: "form-select", id: "airport", disabled: true ) %>
+            <%= form.label :Arrival %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-1">
+        <div class="col-md">
+          <div class="form-floating mb-1">
+            <%= form.collection_select(:aircraft_id, Aircraft.all, :id, :name, {:prompt => 'Seleccione'}, class: "form-select", id: "Seleccione" , disabled: true) %>
+            <%= form.label :Aircraft %>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating mb-1">
+            <p class="form-control"> <%=@booking.total_price %> </p>
+            <%= form.label :Price, "Price USD" %>
           </div>
         </div>
       </div>
@@ -34,30 +53,11 @@
       <div class="row g-2 mb-1">
         <div class="row g-2 mb-1">
           <div class="col-md">
-            <div class="form-floating mb-1">
-              <%= form.collection_select(:aircraft_id, Aircraft.all, :id, :description, {:prompt => 'Seleccione'}, class: "form-select", id: "Seleccione", disabled: true) %>
-              <%= form.label :Descriptions %>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row g-2 mb-1">
-        <div class="row g-2 mb-1">
-          <div class="col-md">
-            <div class="form-floating mb-1">
-
-              <p class="form-control"><%#= (@booking.finish_time.try(:to_date) - @booking.start_time.try(:to_date)+1).to_i * @booking.aircraft.price %></p>
-
-              <p class="form-control"> <%=@booking.total_price %> </p>
-
-              <%= form.label :Price, "Price USD" %>
-            </div>
           </div>
           <%= image_tag "PDF417.png",  height: "150" %>
         </div>
       </div>
-      <p><%= link_to "Add Review", new_booking_review_aircraft_path(@booking), class: "btn btn-light mt-5" %></p>
+      <p><%= link_to "Add Review", new_booking_review_aircraft_path(@booking), class: "btn btn-dark mt-5" %></p>
     </div>
   <% end %>
 </div>
