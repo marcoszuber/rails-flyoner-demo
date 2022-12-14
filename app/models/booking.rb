@@ -16,9 +16,10 @@ class Booking < ApplicationRecord
   end
 
   def add_empty_leg
+
     empty_leg = EmptyLeg.new
-    empty_leg.from = self.to
-    empty_leg.to = self.from
+    empty_leg.from = Airport.find(self.to).country
+    empty_leg.to = Airport.find(self.from).country
     empty_leg.date = self.finish_time
     empty_leg.seat_available = self.aircraft.seats
     empty_leg.save
