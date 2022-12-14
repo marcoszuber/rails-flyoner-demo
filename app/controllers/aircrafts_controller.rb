@@ -15,7 +15,7 @@ class AircraftsController < ApplicationController
       end_date = params[:finish_time].try(:to_date) || "Wen, 08 Dec 2022 17:03:06 -0300".try(:to_date)
       seats = params[:seats].to_i || 1
       bookings = Booking.where(start_time: start_date..end_date).or(Booking.where(finish_time: start_date..end_date))
-      @aircrafts = Aircraft.where.not(id: bookings.map(&:aircraft_id)).where(status: true).and(Aircraft.where.not(seats: 1..seats))
+      @aircrafts = Aircraft.where.not(id: bookings.map(&:aircraft_id)).where(status: true).and(Aircraft.where.not(seats: 1...seats))
     else
       @aircrafts = Aircraft.where(status: true)
     end
