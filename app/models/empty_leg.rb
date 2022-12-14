@@ -7,6 +7,7 @@ class EmptyLeg < ApplicationRecord
     end
 
     def country_to
+        Airport.find(self.to).country
     end
 
     end
