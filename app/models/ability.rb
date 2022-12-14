@@ -47,6 +47,7 @@ class Ability
       can :create, Booking
       can :read, EmptyLeg
       can :create, ReviewAircraft
+      can :read, ReviewAircraft
       can :update, ReviewAircraft, user: user
       can :read, Aircraft
       can :create, Feedback
