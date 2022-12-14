@@ -81,13 +81,14 @@
     </div>
   </div>
 </div>
-
-<div style="text-align:center; font-style:italic;" class="mt-4">Scroll to left for more picture</div>
-<div class="scroll-container container">
-  <div class="gridscroll">
-    <!-- PLACE YOUR IMG URL HERE -->
-    <% @aircraft.photos.each do |photo| %>
-      <img src="<%=url_for(photo)%>"  alt="">
-    <% end %>
+<% if @aircraft.photos.count > 1   %>
+  <div style="text-align:center; font-style:italic;" class="mt-4">Scroll to left for more picture</div>
+  <div class="scroll-container container">
+    <div class="gridscroll">
+      <!-- PLACE YOUR IMG URL HERE -->
+      <% @aircraft.photos.each do |photo| %>
+        <img src="<%=url_for(photo)%>"  alt="">
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

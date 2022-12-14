@@ -5,10 +5,12 @@
         <th>Booking ID</th>
         <th>Departure</th>
         <th>Arrival</th>
+        <th>From</th>
+        <th>To</th>
         <th>User</th>
         <th>Aircraft</th>
         <th>Price</th>
-        <th class="text-center" colspan="2"> Action  </th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +19,13 @@
           <td><%= b.id%></td>
           <td><%= b.start_time.strftime("%d/%m/%Y") %></td>
           <td><%= b.finish_time.strftime("%d/%m/%Y")%></td>
+          <% if b.from.present? %>
+            <td><%= Airport.find(b.from.to_i).name%></td>
+            <td><%= Airport.find(b.to.to_i).name%></td>
+          <% else %>
+            <td>---</td>
+            <td>---</td>
+          <% end %>
           <td><%= b.user.first_name %></td>
           <td><%= b.aircraft.name%></td>
           <td>USD <%= b.total_price%></td>
