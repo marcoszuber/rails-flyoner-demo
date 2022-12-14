@@ -10,7 +10,7 @@
     <%= form_tag aircrafts_path, class: "d-flex nav-search justify-content-between", method: :get do %>
       <div class="form-group col-5 m-1">
         <label for="start_time">Start time</label>
-        <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time"%>
+        <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time" %>
       </div>
       <div class="form-group col-5 m-1">
         <label for="finish_time">Finish time</label>
@@ -21,7 +21,7 @@
         <%= number_field_tag :seats, params[:seats], class: "form-control", placeholder: "number" %>
       </div>
       <div class="form-group col-1 m-1 mt-4">
-        <%= button_tag "Submit", type: "submit", class: "btn btn-dark"  %>
+        <%= button_tag "Submit", type: "submit", class: "btn btn-dark" %>
       </div>
     <% end %>
   </div>
@@ -32,33 +32,34 @@
     <p>Book one of our empty leg flights</p>
   </div>
 
-<div class="row justify-content-between mt-5">
-  <% @empty_legs.each do |empty_leg| %>
+  <div class="row justify-content-between mt-5">
+    <% @empty_legs.each do | empty_leg | %>
 
-    <%#= form_tag root_path(empty_leg), method: :get do %>
+      <%#= form_tag root_path(empty_leg), method: :get do %>
       <%#= hidden_field_tag :start_time, params[:start_time] %>
       <%#= hidden_field_tag :finish_time, params[:finish_time] %>
       <%#= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
 
-    <div class="col-4 my-2">
-          <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= 'https://picsum.photos/seed/picsum/200/301' %>);" >
-            <%= link_to '', new_booking_payment_path(empty_leg.booking), class:"stretched-link" %>
-            <div>
-              <h2><strong><%= empty_leg.to %></strong></h2>
-              <p>From <%= empty_leg.from %></p>
-            </div>
-              <div class="boton-avion-jb">
-              </div>
-                <p>Seats Available <strong><%= empty_leg.seat_available %></strong></p>
-            <div class="d-flex flex-row-reverse">
-              <p>Price <strong>USD <%= @aircrafts.last.price %></strong></p>
-            </div>
-              </div>
+      <div class="col-4 my-2">
+        <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path(empty_leg.to) %>); background-size: cover">
+          <%= link_to '', new_booking_payment_path(empty_leg.booking), class: "stretched-link" %>
+          <div>
+            <h2><strong><%= empty_leg.to %></strong></h2>
+            <p>From <%= empty_leg.from %></p>
           </div>
-  <%# end %>
-  <%# end %>
-  <% end %>
-    </div>
+          <div class="boton-avion-jb">
+          </div>
+          <p>Seats Available <strong><%= empty_leg.seat_available %></strong></p>
+          <p>Date: <strong><%= empty_leg.date %></strong></p>
+          <div class="d-flex flex-row-reverse">
+            <p>Price <strong>USD <%= empty_leg.price %></strong></p>
+          </div>
+        </div>
+      </div>
+      <%# end %>
+      <%# end %>
+    <% end %>
+  </div>
 
 </div>
 </div>
