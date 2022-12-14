@@ -6,8 +6,4 @@ class EmptyLeg < ApplicationRecord
         Booking.find_by_empty_leg_id(self.id).total_price
     end
 
-    def country_to
-        Airport.find(self.to).country
-    end
-
     end

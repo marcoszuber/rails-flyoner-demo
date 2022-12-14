@@ -1,22 +1,23 @@
-<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>);">
+
+<div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>); background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover;">
   <div class="container-jb" id="container-banner-jb">
     <h1>Travel your way with Flyoner</h1>
-    <p>Choose one of our empty legs and experience a unique journey.</p>
+    <p>Choose one of our aircraft and experience a unique journey.</p>
   </div>
 </div>
 <div class="container">
 
   <div class="card p-3 rounded-4" style="margin-top: -30px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2);">
     <%= form_tag aircrafts_path, class: "d-flex nav-search justify-content-between", method: :get do %>
-      <div class="form-group col-5 m-1">
+      <div class="col-5 m-1">
         <label for="start_time">Start time</label>
-        <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time" %>
+        <%= date_field_tag :start_time, params[:start_time], class: "form-control", placeholder: "Start Time"%>
       </div>
-      <div class="form-group col-5 m-1">
+      <div class="col-5 m-1">
         <label for="finish_time">Finish time</label>
         <%= date_field_tag :finish_time, params[:finish_time], class: "form-control ", placeholder: "finish Time" %>
       </div>
-      <div class="form-group col-1 m-1">
+      <div class="col-1 m-1">
         <label for="finish_time">Seats</label>
         <%= number_field_tag :seats, params[:seats], class: "form-control", placeholder: "number" %>
       </div>
@@ -34,12 +35,6 @@
 
   <div class="row justify-content-between mt-5">
     <% @empty_legs.each do | empty_leg | %>
-
-      <%#= form_tag root_path(empty_leg), method: :get do %>
-      <%#= hidden_field_tag :start_time, params[:start_time] %>
-      <%#= hidden_field_tag :finish_time, params[:finish_time] %>
-      <%#= button_tag class: "btn btn-link w-100 text-decoration-none text-start" do %>
-
       <div class="col-4 my-2">
         <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= image_path 'Clouds.jpg' %>);" >
           <%= link_to '', new_booking_payment_path(empty_leg.booking), class: "stretched-link" %>
@@ -50,7 +45,7 @@
           <div class="boton-avion-jb">
           </div>
           <p>Seats Available <strong><%= empty_leg.seat_available %></strong></p>
-          <p>Date: <strong><%= empty_leg.date %></strong></p>
+          <p>Date: <strong><%= empty_leg.date.strftime("%d %B %Y") %></strong></p>
           <div class="d-flex flex-row-reverse">
             <p>Price <strong>USD <%= empty_leg.price / 2 %></strong></p>
           </div>

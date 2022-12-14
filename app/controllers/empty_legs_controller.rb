@@ -21,7 +21,7 @@ class EmptyLegsController < ApplicationController
       @aircrafts = Aircraft.where(status: true)
     else
       @aircrafts = Aircraft.where(status: true)
-      @empty_legs = EmptyLeg.all
+      @empty_legs = EmptyLeg.all.where(date: DateTime.now..DateTime.now + 30.days)
     end
   end
 
