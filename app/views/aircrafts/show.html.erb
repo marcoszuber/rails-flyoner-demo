@@ -1,7 +1,7 @@
-<% if @aircraft.photos.first.key.present? %>
-  <% photo = url_for(@aircraft.photos.first) %>
+<% if @aircraft.photos.first.nil? %>
+    <% photo = asset_path("background-banner.jpg") %>
 <% else %>
-  <% photo = asset_path("background-banner.jpg") %>
+  <% photo = url_for(@aircraft.photos.first) %>
 <% end %>
 <div class="banner-jb" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= photo %>);">
   <div class="container-jb" id="container-banner-jb">
@@ -18,7 +18,7 @@
             <div class="d-flex align-items-center mb-2">
               <h4 class="rev-title pb-0 mb-0"><strong><%= @aircraft.name.capitalize %></strong></h4>
 
-              
+
               <% if @average_stars != 0 %>
 
                 <h5 class="avg-stars-jb ps-3 pb-0 mb-0">
@@ -28,7 +28,7 @@
                   <% else %>
                     <p></p>
               <% end %>
-                
+
             </div>
             <p><em><%= @aircraft.description.capitalize %></em></p>
             <p><%= "Available Seats: #{@aircraft.seats}" %></p>
@@ -56,11 +56,11 @@
             </div>
             <div class=" m-1" >
               <label for="from" class="mt-5">From:</label>
-              <%= form.select :from, Airport.pluck(:name, :code), {include_blank: true}, { class: "bg-light", data: { controller: "slim" } } %>
+              <%= form.select :from, Airport.pluck(:name, :id), {include_blank: true}, { class: "bg-light", data: { controller: "slim" , target: "price-updater.startAirport", action: "price-updater#changePrice" } } %>
             </div>
             <div class=" m-1">
               <label for="to">to: </label>
-              <%= form.select :to, Airport.pluck(:name, :code), {include_blank: true}, { class: "bg-light", data: { controller: "slim" } } %>
+              <%= form.select :to, Airport.pluck(:name, :id), {include_blank: true}, { class: "bg-light", data: { controller: "slim", target: "price-updater.finishAirport", action: "price-updater#changePrice" } } %>
             </div>
               <div class="d-flex justify-content-between align-items-end mt-3">
                 <% if user_signed_in? %>

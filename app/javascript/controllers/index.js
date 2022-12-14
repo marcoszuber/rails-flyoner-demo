@@ -4,7 +4,6 @@
 
 import { application } from "./application"
 
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -13,3 +12,6 @@ application.register("price-updater", PriceUpdaterController)
 
 import SlimController from "./slim_controller"
 application.register("slim", SlimController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)

@@ -345,6 +345,11 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+detect-it@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-4.0.1.tgz#3f8de6b8330f5086270571251bedf10aec049e18"
+  integrity sha512-dg5YBTJYvogK1+dA2mBUDKzOWfYZtHVba89SyZUhc4+e3i2tzgjANFg5lDRCd3UOtRcw00vUTMK8LELcMdicug==
+
 electron-to-chromium@^1.4.251:
   version "1.4.284"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.284.tgz#61046d1e4cab3a25238f6bf7413795270f125592"
@@ -430,6 +435,11 @@ function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
+
+geolib@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/geolib/-/geolib-3.3.3.tgz#17f5a0dcdc0b051bd631b66f7131d2c14c54a15b"
+  integrity sha512-YO704pzdB/8QQekQuDmFD5uv5RAwAf4rOUPdcMhdEOz+HoPWD0sC7Qqdwb+LAvwIjXVRawx0QgZlocKYh8PFOQ==
 
 glob-to-regexp@^0.4.1:
   version "0.4.1"
@@ -696,6 +706,13 @@ source-map@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
+
+star-rating.js@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/star-rating.js/-/star-rating.js-4.3.0.tgz#6ce4e092480b0693e74fe1799b3a37a7b85caf67"
+  integrity sha512-uHFwdMUf1+roKvZmh+clpkOpJMrRPSxvuWdIFh4oZtPCbyfUI3xzCWqDNtX060L+wRi3AHT3ZNH7JYf05FYeKQ==
+  dependencies:
+    detect-it "^4.0.0"
 
 supports-color@^8.0.0:
   version "8.1.1"
