@@ -29,7 +29,7 @@ class ReviewAircraftsController < ApplicationController
       @review_aircraft.user = current_user
 
       if @review_aircraft.save
-        redirect_to booking_review_aircrafts_path(@booking), notice: "review successfully created."
+        redirect_to root_path, notice: "review successfully created."
       else
         render :new, status: :unprocessable_entity
       end
