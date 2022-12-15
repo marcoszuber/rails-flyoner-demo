@@ -3,9 +3,9 @@
     <h3>Your Aircraft</h3>
   </div>
 
-  <div class="card-product-jb cardshadow">
+  <div class="card-product-jb ">
           <% @aircrafts.each do |aircraft| %>
-            <div class="card-product-infos-jb my-5">
+            <div class="card-product-infos-jb my-5 cardshadow">
             <% if aircraft.photos.first %>
               <%= cl_image_tag(aircraft.photos.first.key, class: "img-fluid") %>
             <% else %>
