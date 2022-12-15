@@ -36,7 +36,7 @@
   <div class="row justify-content-between mt-5">
     <% @empty_legs.each do | empty_leg | %>
       <div class="col-4 my-2">
-        <div class="card card-intro-mrz card-intro-mrz3" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= image_path 'Clouds.jpg' %>);" >
+        <div class="card card-intro-mrz card-intro-mrz3 cardshadow" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= image_path 'Clouds.jpg' %>);" >
           <%= link_to '', new_booking_payment_path(empty_leg.booking), class: "stretched-link" %>
           <div>
             <h2><strong><%= empty_leg.to %></strong></h2>
