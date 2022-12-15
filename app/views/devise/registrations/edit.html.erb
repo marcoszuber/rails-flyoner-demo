@@ -1,45 +1,46 @@
-<div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>); height: 800px; background-size: cover;">
+<div class="" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4)), url(<%= asset_path("background-banner.jpg") %>); background-size: cover;  background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; padding-bottom: 50px; margin-bottom: -50px;">
   <div class="container">
     <div class="row justify-content-center"></div>
-    <div class="mt-5 card p-3" style='width: 500px;'>
-<h2>Edit your account information</h2>
+      <div class="mt-5 card p-3" style='width: 500px;'>
+        <h2>Edit your account information</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :photo, as: :file %>
-    <%= f.label :owner, "Are you a aircraft owner?", class: "fw-bolder" %>
-    <%= f.input :owner, as: :boolean, label: "<-" %>
-    <%= f.label :owner, "Do you want to fly with us?", class: "fw-bolder" %>
-    <%= f.input :client, as: :boolean, label: "<-", class: "fw-bolder" %>   
-  </div>
+          <%= f.input :password,
+                      hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :photo, as: :file %>
+          <%= f.label :owner, "Are you a aircraft owner?", class: "fw-bolder",  style: "font-size: 1.2rem;" %>
+          <%= f.check_box :owner, as: :boolean %>
+          <%= f.label :client, "Do you want to fly with us?", class: "fw-bolder mt-2"  ,  style: "font-size: 1.2rem;" %>
+          <%= f.check_box :client, as: :boolean %>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" , class: "btn btn-dark mb-3" %>
-  </div>
-<% end %>
+        <div class="form-actions">
+          <%= f.button :submit, "Update" , class: "btn btn-dark mb-3 mt-1", style: "width: 100%" %>
+        </div>
+        <% end %>
 
-<%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-warning mb-3" %>
+        <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-warning mb-3" %>
 
-<%= link_to "Back", :back, class: "btn" %>
-</div>
+        <%= link_to "Back", :back, class: "btn" %>
+      </div>
+    </div>
   </div>
 </div>
